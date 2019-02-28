@@ -15,25 +15,10 @@ $db->addConnection(parse_ini_file('src/conf/conf.ini'));
 $db->setAsGlobal();
 $db->bootEloquent();
 
-echo '</br>========================</br>';
-echo 'lister les jeux dont le nom contient \'Mario\' </br>';
-echo 'Requete : Select ...</br>';
-echo '<a href="">Cliquer ici pour tester la requete</a>';
-echo '</br>========================</br>';
-echo 'lister les compagnies installées au Japon</br>';
-echo 'Requete : Select ...</br>';
-echo '<a href="">Cliquer ici pour tester la requete</a>';
-echo '</br>========================</br>';
-echo 'lister les plateformes dont la base installée est >= 10 000 000 </br>';
-echo 'Requete : Select ...</br>';
-echo '<a href="">Cliquer ici pour tester la requete</a>';
-echo '</br>========================</br>';
-echo 'lister 442 jeux à partir du 21173ème </br>';
-echo 'Requete : Select ...</br>';
-echo '<a href="">Cliquer ici pour tester la requete</a>';
-echo '</br>========================</br>';
-echo 'lister les jeux, afficher leur nom et deck, en paginant (taille des pages : 500) </br>';
-echo 'Requete : Select ...</br>';
-echo '<a href="">Cliquer ici pour tester la requete</a>';
-echo '</br>========================</br>';
 
+//Question 1 : tous les jeux qui contiennent le mot Mario
+echo "<h3>Question n°1 : liste des jeux contenant Mario dans leur titre</h3>";
+$games = Game::where('name', 'LIKE','%mario%')->get();
+foreach($games as $game) {
+    echo "Nom du jeu : $game->name <br>";
+}
