@@ -38,3 +38,12 @@ $platforms = Platform::where('install_base', '>=','10000000')->get();
 foreach($platforms as $platform) {
     echo "Nom de la plateforme : $platform->name <br>";
 }
+
+//Question 4: 442 jeux à partir du 21173ème
+echo "<h3>Question n°4 : liste de 442 jeux à partir du 21173ème</h3>";
+
+$jeux = Game::where('id', '=', '21173')->first();
+for($i = 0; $i<443; $i++){
+  $jeu = Game::where('id', '=', '21173' +$i)->first();
+  echo "id: $jeu->id,  nom: $jeu->name <br>";
+}
