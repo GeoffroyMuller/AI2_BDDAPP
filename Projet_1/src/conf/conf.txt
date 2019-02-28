@@ -1,0 +1,9 @@
+//conf.ini
+
+driver=mysql
+username=root
+password=
+host=localhost
+database=gamepedia
+charset=utf8
+collation=utf8_unicode_ci
