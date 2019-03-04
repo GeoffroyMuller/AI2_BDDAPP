@@ -1,0 +1,35 @@
+Dans Catégorie:
+
+public function annonces()
+{
+    return $this->hasMany('\models\Annonce', 'id');
+}
+
+Dans Annonce:
+
+public function categories()
+{
+  return $this->hasMany('\models\Categorie', 'id');
+}
+
+public function photos()
+{
+  return $this->hasMany('\models\Photo', 'id');
+}
+
+Dans Photo:
+
+public function annonce()
+{
+  return $this->belongsTo('\models\Categorie', 'id');
+}
+
+3.1:
+
+$annonce = Annonce::where('id', '=', 22)->first();
+$photos = $annonce->photos()->get();
+
+3.2:
+$photos = $annonce->photos()->where('taille_octet', '>', '100000')
+
+3.3:
