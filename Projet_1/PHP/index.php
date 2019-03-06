@@ -55,3 +55,18 @@ for($i = 0; $i<443; $i++){
   echo "id: $jeu->id,  nom: $jeu->name <br>";
 }
 
+//Question 5: lister les jeux, afficher leur nom et deck, en paginant (taille des pages : 500)
+echo "<h3>Question n°5 : lister les jeux, afficher leur nom et deck, en paginant (taille des pages : 500)</h3>";
+$idmax = Game::select('id')->get();
+$idmax = $idmax->toArray();
+//$idmax = max($idmax);
+//echo $idmax['id'];
+$imax = count($idmax);
+$pass = 500;
+for($i = 0; $i<500; $i++) {
+    $jeux5 = Game::where('id', '=', '1' + $i)->first();
+
+    echo "id: $jeux5->id, nom: $jeux5->name, deck:  <br>";
+}
+
+
