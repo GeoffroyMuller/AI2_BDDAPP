@@ -30,6 +30,27 @@ $annonce = Annonce::where('id', '=', 22)->first();
 $photos = $annonce->photos()->get();
 
 3.2:
-$photos = $annonce->photos()->where('taille_octet', '>', '100000')
+$annonce = Annonce::where('id', '=', 22)->first();
+$photos = $annonce->photos()->where('taille_octet', '>', '100000')->get();
 
 3.3:
+
+$a = Annonce::all();
+$annoncePhotos = $a->photos()->count();
+$annonces = $a->where($annoncePhotos, '>', 3)->get();
+
+3.4:
+$a = Annonce::all();
+$annonce = $a->photos()->where('taille_octet, '>', '100000')->get();
+
+4:
+$annonce = Annonce::find(22);
+$photo = new Photo();
+$photo->file = "Nouvelle photo";
+$photo->date = '20/01/2019';
+$photo->taille_octet = '99999';
+$annonce->photos()->save($photo);
+
+5:
+$annonce = Annonce::find(22);
+$annonce->photos()->attach([42, 73]);
