@@ -2,26 +2,26 @@ Dans Catégorie:
 
 public function annonces()
 {
-    return $this->hasMany('\models\Annonce', 'id');
+    return $this->hasMany('\models\Annonce', 'id_annonce');
 }
 
 Dans Annonce:
 
 public function categories()
 {
-  return $this->hasMany('\models\Categorie', 'id');
+  return $this->hasMany('\models\Categorie', 'id_cat');
 }
 
 public function photos()
 {
-  return $this->hasMany('\models\Photo', 'id');
+  return $this->hasMany('\models\Photo', 'id_photo');
 }
 
 Dans Photo:
 
 public function annonce()
 {
-  return $this->belongsTo('\models\Categorie', 'id');
+  return $this->belongsTo('\models\Categorie', 'id_annoncePhoto');
 }
 
 3.1:
