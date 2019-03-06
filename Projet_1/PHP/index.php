@@ -58,15 +58,30 @@ for($i = 0; $i<443; $i++){
 //Question 5: lister les jeux, afficher leur nom et deck, en paginant (taille des pages : 500)
 echo "<h3>Question n°5 : lister les jeux, afficher leur nom et deck, en paginant (taille des pages : 500)</h3>";
 $idmax = Game::select('id')->get();
-$idmax = $idmax->toArray();
-//$idmax = max($idmax);
-//echo $idmax['id'];
-$imax = count($idmax);
-$pass = 500;
-for($i = 0; $i<500; $i++) {
-    $jeux5 = Game::where('id', '=', '1' + $i)->first();
+$nbPages = (count($idmax)/500)+1;
+$numPage = 1;
 
-    echo "id: $jeux5->id, nom: $jeux5->name, deck:  <br>";
+// Lors du passage avec Slim, utilisez la methode post de Slim.
+if(isset($_POST['numeroPage'])) {
+    $numPage = $_POST['numeroPage'];
 }
 
+$valeurMax = $numPage * 500;
+for($valeurMin = $valeurMax - 499 ; $valeurMin < $valeurMax + 1 ; $valeurMin++) {
+    $jeuAffiche = Game::where('id', '=',$valeurMin)->first();
+    if($jeuAffiche != null) {
+        echo "<ul>";
+        echo "<li>Identifiant du jeu: $jeuAffiche->id</li>";
+        echo "<li>Nom du jeu: $jeuAffiche->name</li>";
+        echo "<li>Description du deck: $jeuAffiche->deck</li>";
+        echo "</ul>";
+    }
 
+}
+
+$formulaireQuestion5 = "<form action='index.php' method='post'><select name='numeroPage'>";
+for($i = 1 ; $i < $nbPages ; $i++) {
+    $formulaireQuestion5 .= " <option value='$i'>$i</option> ";
+}
+$formulaireQuestion5 .= " </select> <input type='submit' value='Valider'> </form> ";
+echo $formulaireQuestion5." </body></html> ";
