@@ -15,10 +15,16 @@ $db->addConnection(parse_ini_file('src/conf/conf.ini'));
 $db->setAsGlobal();
 $db->bootEloquent();
 
+$app = new \Slim\Slim ;
+
+$app->get('/contientMario', function(){
+    echo 'Mario';
+});
+
 echo '</br>========================</br>';
 echo 'lister les jeux dont le nom contient \'Mario\' </br>';
 echo 'Requete : Select ...</br>';
-echo '<a href="">Cliquer ici pour tester la requete</a>';
+echo '<a href="/contientMario">Cliquer ici pour tester la requete</a>';
 echo '</br>========================</br>';
 echo 'lister les compagnies installées au Japon</br>';
 echo 'Requete : Select ...</br>';
@@ -36,4 +42,5 @@ echo 'lister les jeux, afficher leur nom et deck, en paginant (taille des pages 
 echo 'Requete : Select ...</br>';
 echo '<a href="">Cliquer ici pour tester la requete</a>';
 echo '</br>========================</br>';
+
 
