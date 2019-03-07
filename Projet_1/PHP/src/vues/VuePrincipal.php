@@ -17,11 +17,21 @@ class VuePrincipal
 
     public function htmlquestion()
     {
-        $html = <<<END
-<p>question</p>
+            $html = <<<END
+<h3>Projet 1</h3>
+<ul>
+  <li><a href="/projet1/question/1">Question 1</a></li>
+  <li><a href="/projet1/question/2">Question 2</a></li>
+  <li><a href="/projet1/question/3">Question 3</a></li>
+  <li><a href="/projet1/question/4">Question 4</a></li>
+  <li><a href="/projet1/question/5">Question 5</a></li>
+</ul>
+<h3>Projet 2</h3>
 END;
+
         return $html;
     }
+
     public function htmlquestionP1Q1()
     {
         $res = "<h3>Question n°1 : liste des jeux contenant Mario dans leur titre</h3>";
@@ -62,7 +72,7 @@ END;
     public function render()
     {
         switch ($this->selecteur) {
-            case "QUESTION_VIEW" :
+            case "ALL_VIEW" :
                 {
                     $content = $this->htmlquestion();
                     break;
@@ -96,7 +106,7 @@ END;
         $html = <<<END
 <!DOCTYPE html>
 <html>
-<head><h3>Projet</h3></head>
+<head><a href="/Principale">accueil</a></head>
 <body>
  
 <div>

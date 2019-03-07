@@ -23,8 +23,8 @@ $db->bootEloquent();
 $app = new \Slim\Slim;
 
 $app->get('/Principale', function () {
-    $vuePrincipal = new \gamepedia\vues\VuePrincipal("elem", "QUESTION_VIEW");
-    echo $vuePrincipal->render();
+    $vuePrincipal = new \gamepedia\vues\VuePrincipal("elem", "ALL_VIEW");
+    $vuePrincipal->render();
 });
 
 $app->get('/projet1/question/:id', function ($id) {
