@@ -7,10 +7,12 @@
 
 require_once 'vendor/autoload.php';
 
+use Illuminate\Database\Capsule\Manager as Manager;
 use gamepedia\models\Game as Game;
 use gamepedia\models\Platform as Platform;
 use gamepedia\models\Company as Company;
-use Illuminate\Database\Capsule\Manager as Manager;
+use gamepedia\vues\VuePrincipal;
+
 
 $db = new Manager();
 $db->addConnection(parse_ini_file('src/conf/conf.ini'));
@@ -21,5 +23,17 @@ $db->bootEloquent();
 $app = new \Slim\Slim ;
 
 $app->get('/contientMario', function(){
-    echo 'Mario';
+    $vuePrincipal = new \gamepedia\vues\VuePrincipal("elem","QUESTION_VIEW");
+    echo $vuePrincipal->render();
+});
+$app->run();
+
+$app->get('/question/:id', function($id){
+    $selecteur = "QUESTION_VIEW";
+    if($id == '1'){
+        $selecteur = "Q1";
+    }
+
+    $vuePrincipal = new \gamepedia\vues\VuePrincipal("elem",$selecteur);
+    echo $vuePrincipal->render();
 });
