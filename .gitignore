@@ -3,3 +3,4 @@ Projet_1/PHP/vendor/*
 *.lock
 Projet_1/PHP/.idea/*
 *.xml
+Projet_1/.idea/workspace.xml
