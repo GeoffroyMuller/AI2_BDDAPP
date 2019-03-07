@@ -22,13 +22,13 @@ $db->bootEloquent();
 
 $app = new \Slim\Slim ;
 
-$app->get('/contientMario', function(){
+$app->get('/Principal', function(){
     $vuePrincipal = new \gamepedia\vues\VuePrincipal("elem","QUESTION_VIEW");
     echo $vuePrincipal->render();
 });
-$app->run();
 
-$app->get('/question/:id', function($id){
+
+$app->get('projet1/question/:id', function($id){
     $selecteur = "QUESTION_VIEW";
     if($id == '1'){
         $selecteur = "Q1";
@@ -37,3 +37,5 @@ $app->get('/question/:id', function($id){
     $vuePrincipal = new \gamepedia\vues\VuePrincipal("elem",$selecteur);
     echo $vuePrincipal->render();
 });
+
+$app->run();
