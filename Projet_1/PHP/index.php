@@ -28,12 +28,32 @@ $app->get('/contientMario', function(){
 });
 $app->run();
 
-$app->get('/question/:id', function($id){
-    $selecteur = "QUESTION_VIEW";
-    if($id == '1'){
-        $selecteur = "Q1";
-    }
+$app->get('projet1/question/:id', function($id){
+    switch ($id) {
+      case '1':
+        $c = new \wishlist\controleurs\ControleurGame();
+        $c->afficherJeuxMario();
+        break;
+      case '2':
+        $c = new \wishlist\controleurs\ControleurCompany();
+        $c->compagniesJap();
+        break;
+      case '3':
+        $c = new \wishlist\controleurs\ControleurPlatform();
+        $c->grossesPlatforms();
+        break;
+      case '4':
+        $c = new \wishlist\controleurs\ControleurGame();
+        $c->afficherJeuxAPartir();
+        break;
+      case '5':
+        $c = new \wishlist\controleurs\ControleurGame();
+        $c->paginationJeux();
+        break;
+      default:
+        // code...
+        break;
+    }{
 
-    $vuePrincipal = new \gamepedia\vues\VuePrincipal("elem",$selecteur);
-    echo $vuePrincipal->render();
+    }
 });

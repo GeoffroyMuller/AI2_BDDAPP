@@ -7,11 +7,10 @@ use gamepedia\models\Game;
 class ControleurGame{
 
   public function afficherJeuxMario(){
-    echo "<h3>Question n°1 : liste des jeux contenant Mario dans leur titre</h3>";
+
     $games = Game::where('name', 'LIKE','%mario%')->get();
-    foreach($games as $game) {
-        echo "Nom du jeu : $game->name <br>";
-    }
+    $vue = new VuePrincipal($games, "P1Q1")
+
   }
 
   public function afficherJeuxAPartir(){
