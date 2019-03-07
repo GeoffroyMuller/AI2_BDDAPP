@@ -24,9 +24,9 @@ END;
     }
     public function htmlquestionP1Q1()
     {
-        $res = "<h3>Question n°1 : liste des jeux contenant Mario dans leur titre</h3><br>";
+        $res = "<h3>Question n°1 : liste des jeux contenant Mario dans leur titre</h3>";
         foreach($this->elements as $game) {
-            $res = $res."<p>Nom du jeu : $game->name </p><br>";
+            $res = $res."<p>Nom du jeu : $game->name </p>";
         }
         return $res;
     }
@@ -105,6 +105,6 @@ END;
 </body></html>
 END;
 
-        return $html;
+        echo $html;
     }
 }

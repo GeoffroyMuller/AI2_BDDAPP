@@ -3,14 +3,14 @@
 namespace gamepedia\controleurs;
 
 use gamepedia\models\Game;
-
+use gamepedia\vues\VuePrincipal;
 class ControleurGame{
 
   public function afficherJeuxMario(){
 
     $games = Game::where('name', 'LIKE','%mario%')->get();
-    $vue = new VuePrincipal($games, "P1Q1")
-
+    $vue = new \gamepedia\vues\VuePrincipal($games, "P1Q1");
+    $vue->render();
   }
 
   public function afficherJeuxAPartir(){

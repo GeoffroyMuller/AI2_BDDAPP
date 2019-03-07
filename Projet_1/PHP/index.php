@@ -22,31 +22,31 @@ $db->bootEloquent();
 
 $app = new \Slim\Slim;
 
-$app->get('/Principal', function () {
+$app->get('/Principale', function () {
     $vuePrincipal = new \gamepedia\vues\VuePrincipal("elem", "QUESTION_VIEW");
     echo $vuePrincipal->render();
 });
 
-$app->get('projet1/question/:id', function ($id) {
+$app->get('/projet1/question/:id', function ($id) {
     switch ($id) {
         case '1':
-            $c = new \wishlist\controleurs\ControleurGame();
+            $c = new \gamepedia\controleurs\ControleurGame();
             $c->afficherJeuxMario();
             break;
         case '2':
-            $c = new \wishlist\controleurs\ControleurCompany();
+            $c = new \gamepedia\controleurs\ControleurCompany();
             $c->compagniesJap();
             break;
         case '3':
-            $c = new \wishlist\controleurs\ControleurPlatform();
+            $c = new \gamepedia\controleurs\ControleurPlatform();
             $c->grossesPlatforms();
             break;
         case '4':
-            $c = new \wishlist\controleurs\ControleurGame();
+            $c = new \gamepedia\controleurs\ControleurGame();
             $c->afficherJeuxAPartir();
             break;
         case '5':
-            $c = new \wishlist\controleurs\ControleurGame();
+            $c = new \gamepedia\controleurs\ControleurGame();
             $c->paginationJeux();
             break;
         default:
