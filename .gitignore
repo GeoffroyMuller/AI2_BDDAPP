@@ -2,3 +2,4 @@ Projet_1/PHP/vendor/*
 *.ini
 *.lock
 Projet_1/PHP/.idea/*
+*.xml
