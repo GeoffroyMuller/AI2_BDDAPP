@@ -1,5 +1,5 @@
 <?php
-namespace aibdd\models;
+namespace gamepedia\models;
 final class Company extends \Illuminate\Database\Eloquent\Model{
     //Nom de la table.
     protected $table = 'company';
