@@ -162,7 +162,7 @@ foreach ($games as $game){
 
 
 echo "<h3>Q5</h3>";
-$games=  Game::where('name', 'LIKE','%mario%')->get();
+$games=  Game::where('name', 'LIKE','Mario%')->get();
 
 
 foreach($games as $game) {
