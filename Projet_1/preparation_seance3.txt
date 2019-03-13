@@ -1,0 +1,44 @@
+Partie 1 :
+
+
+Q1. La fonction microtime retourne le timestamp UNIX actuel avec les microsecondes.
+// en php 5 on peut utiliser un boolean qui nous permet de recuperer
+// directement le timestamp sous forme de nbre a virgule et non de string
+$tempsDepart = microtime(true);
+/**
+inserer ici le code dont ont veut mesurer la duree d'execution
+*/
+$tempsFin = microtime(true);
+// On calcule la duree entre les deux timestamps
+$duree = $tempsFin - $tempsArrivee;
+// On l'affiche
+echo "Temps d'execution : $duree";
+
+
+Q2. Un index est une structure de donnée que va utiliser le SGBD pour retrouver
+plus rapidement les donnees. Il permet de localiser facilement les ressources
+dont l'utilisateur a besoin les plus frequemment lorsqu'il effectue des requetes
+sur la base et accèlere donc la recherche, le tri et les jointures dans une table.
+Nous avons vu lors du semestre 3 que nous utilisions fréquemment la structure de données
+en arbre B / B+ pour réaliser des index.
+
+
+
+
+Partie 2 :
+
+Q1. Dans Eloquent, le log des requêtes est structuré sous la forme d'un tableau contenant des tableaux.
+Chaque tableau contenu dans le tableau principal représente une requête et indique :
+	-un string représentant la requête effectuée
+	-un tableau représentant les contraintes de la requête
+	-un float représentant son temps d'exécution
+
+
+Q2. Si on effectue des requêtes de type query n+1, par exemple
+SELECT * from table WHERE id=0;
+SELECT * from table WHERE id=1;
+....
+où il y aurait 100 id dans la table, nous nous heurtons à un problème de
+performance. En effet, il serait plus rapide de faire une requête qui retourne
+100 résultats d'un coup, plutôt que d'effectuer 100 requêtes qui retourneront chacune
+un résultat.
