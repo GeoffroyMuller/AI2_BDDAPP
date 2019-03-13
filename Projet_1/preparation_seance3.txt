@@ -27,7 +27,11 @@ en arbre B / B+ pour réaliser des index.
 
 Partie 2 :
 
-Q1.
+Q1. Dans Eloquent, le log des requêtes est structuré sous la forme d'un tableau contenant des tableaux.
+Chaque tableau contenu dans le tableau principal représente une requête et indique :
+	-un string représentant la requête effectuée
+	-un tableau représentant les contraintes de la requête
+	-un float représentant son temps d'exécution
 
 
 Q2. Si on effectue des requêtes de type query n+1, par exemple
