@@ -15,6 +15,7 @@ use gamepedia\models\Character as Character;
 use gamepedia\models\Theme as Theme;
 use gamepedia\models\Game2Character as Game2Character;
 use gamepedia\models\GameRating as GameRating;
+use gamepedia\models\Game2Rating as Game2Rating;
 use gamepedia\models\RatingBoard as RatingBoard;
 use Illuminate\Database\Capsule\Manager as Manager;
 
@@ -170,6 +171,21 @@ foreach($games as $game) {
     if(Game2Character::where('game_id','=',$idGame)->count() > 3) {
 
         echo "Nom du jeu :$game->name <br>";
+    }
+
+}
+
+echo "<h3>Q6</h3>";
+foreach($games as $game) {
+    $idGame = $game->id;
+    $game2rating = Game2Rating::where('game_id','=',$idGame)->get();
+    foreach($game2rating as $ratgame) {
+        $rating = GameRating::where('id','=',$ratgame->rating_id)->first();
+        $nameRating = $rating->name;
+        if(str_contains($nameRating,"3+")) {
+            echo "Jeu rating initial 3+ : $game->name <br>";
+        }
+
     }
 
 }
