@@ -21,3 +21,20 @@ dont l'utilisateur a besoin les plus frequemment lorsqu'il effectue des requetes
 sur la base et accèlere donc la recherche, le tri et les jointures dans une table.
 Nous avons vu lors du semestre 3 que nous utilisions fréquemment la structure de données
 en arbre B / B+ pour réaliser des index.
+
+
+
+
+Partie 2 :
+
+Q1.
+
+
+Q2. Si on effectue des requêtes de type query n+1, par exemple
+SELECT * from table WHERE id=0;
+SELECT * from table WHERE id=1;
+....
+où il y aurait 100 id dans la table, nous nous heurtons à un problème de
+performance. En effet, il serait plus rapide de faire une requête qui retourne
+100 résultats d'un coup, plutôt que d'effectuer 100 requêtes qui retourneront chacune
+un résultat.
