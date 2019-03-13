@@ -175,3 +175,17 @@ foreach($marioGames as $game) {
 }
 
 echo "<br><br><br><br>";
+
+echo "<h3>Q7</h3>";
+$incCompanies= Company::where('name','like','%Inc.%')->get();
+foreach($incCompanies as $incCompany){
+    $incMarioGames = $incCompany->jeuxPublies()->where('name','like','%mario%')->get();
+    foreach($incMarioGames as $incMarioGame) {
+
+        $respectRating = $incMarioGame->ratings()->where('name','like','%3+%','and','game_','=',$game->id)->count();
+        if($respectRating >= 1) {
+            echo "Jeu 3+ contenant Mario et publie par Inc.: $incMarioGame->name <br>";
+        }
+    }
+}
+echo "<br><br><br><br>";
