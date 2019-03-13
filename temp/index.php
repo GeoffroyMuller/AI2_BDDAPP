@@ -113,6 +113,9 @@ foreach($marioGames as $marioGame) {
 echo "<br><br><br><br>";
 
 
+
+
+
 //Question 3 PR3
 echo "<h3>Q3</h3>";
 $sonyCompanies= Company::where('name','like','%sony%')->get();
@@ -125,12 +128,20 @@ foreach($sonyCompanies as $sonyCompany){
 }
 echo "<br><br><br><br>";
 
-/*
 echo "<h3>Q4</h3>";
-$games= Game::select('id','name')
-    ->where('name','like','%Mario%')
-    ->get();
 
+foreach($games as $marioGame) {
+    $ratingsMario = $marioGame->ratings;
+    foreach($ratingsMario as $ratingMario) {
+        $ratingBoard = RatingBoard::where('id', '=',$ratingMario->rating_board_id)->first();
+        echo " Rating Board : $ratingBoard->name ($ratingBoard->deck) <br>";
+        /* ->rating_board_id temporaire :: TODO :: question a fixer
+         * $ratingMario->ratingBoards; ne fonctionne pas;
+         * */
+    }
+}
+
+/* faux ancienns modeles
 foreach ($games as $game){
     $temp=$game->id;
     $game2ratings = GameRating::where('game_id', '=', $temp)->get();
@@ -143,22 +154,24 @@ foreach ($games as $game){
         }
     }
 }*/
-
-
+echo "<br><br><br><br>";
 
 echo "<h3>Q5</h3>";
-$games=  Game::where('name', 'LIKE','Mario%')->get();
-foreach($games as $game) {
+
+foreach($marioGames as $game) {
     if($game->personnages()->count() > 3) {
         echo "Jeu commençant par Mario avec au moins 4 personnages : $game->name <br>";
     }
 }
+echo "<br><br><br><br>";
 
 echo "<h3>Q6</h3>";
-foreach($games as $game) {
+foreach($marioGames as $game) {
     $ratings = $game->ratings()->where('name','like','%3+%','and','game_id','=',$game->id)->count();
     if($ratings >= 1) {
         echo "Jeu 3+ commençant par Mario : $game->name <br>";
     }
 
 }
+
+echo "<br><br><br><br>";
