@@ -1,0 +1,17 @@
+Partie 1 :
+
+
+Q1. La fonction microtime retourne le timestamp UNIX actuel avec les microsecondes.
+// en php 5 on peut utiliser un boolean qui nous permet de recuperer
+// directement le timestamp sous forme de nbre a virgule et non de string
+$tempsDepart = microtime(true);
+/**
+inserer ici le code dont ont veut mesurer la duree d'execution
+*/
+$tempsFin = microtime(true);
+// On calcule la duree entre les deux timestamps
+$duree = $tempsFin - $tempsArrivee;
+// On l'affiche
+echo "Temps d'execution : $duree";
+
+
