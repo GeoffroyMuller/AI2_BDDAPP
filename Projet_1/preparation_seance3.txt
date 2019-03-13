@@ -15,3 +15,9 @@ $duree = $tempsFin - $tempsArrivee;
 echo "Temps d'execution : $duree";
 
 
+Q2. Un index est une structure de donnée que va utiliser le SGBD pour retrouver
+plus rapidement les donnees. Il permet de localiser facilement les ressources
+dont l'utilisateur a besoin les plus frequemment lorsqu'il effectue des requetes
+sur la base et accèlere donc la recherche, le tri et les jointures dans une table.
+Nous avons vu lors du semestre 3 que nous utilisions fréquemment la structure de données
+en arbre B / B+ pour réaliser des index.
