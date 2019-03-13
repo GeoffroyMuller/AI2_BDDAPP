@@ -90,19 +90,14 @@ for($i = 1 ; $i < $nbPages ; $i++) {
 }
 $formulaireQuestion5 .= " </select> <input type='submit' value='Valider'> </form> ";
 echo $formulaireQuestion5." </body></html> ";
-/*
 //Question 1 PR2
 echo "<h3>Q1</h3>";
-$game2characters = Game2character::where('game_id', '=', '12342')->get();
-foreach ($game2characters as $game2character){
-    $temp = $game2character->character_id;
-    $characters = Character::where('id', '=', $temp)->get();
-    foreach ($characters as $character){
-        echo "nom : $character->name <br>";
-        echo "deck : $character->deck <br>";
-    }
+$jeu = Game::where('id','=','12342')->first();
+$charactersFor12342 = $jeu->personnages;
+foreach($charactersFor12342 as $character) {
+   echo "Personnage : $character->name || Deck : $character->deck <br>";
 }
-*/
+
 //Question 2 PR2
 /*
 echo "<h3>Q2</h3>";
