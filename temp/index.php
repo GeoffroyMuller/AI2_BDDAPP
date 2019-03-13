@@ -90,6 +90,7 @@ for($i = 1 ; $i < $nbPages ; $i++) {
 }
 $formulaireQuestion5 .= " </select> <input type='submit' value='Valider'> </form> ";
 echo $formulaireQuestion5." </body></html> ";
+
 //Question 1 PR2
 echo "<h3>Q1</h3>";
 $jeu = Game::where('id','=','12342')->first();
@@ -98,25 +99,18 @@ foreach($charactersFor12342 as $character) {
    echo "Personnage : $character->name || Deck : $character->deck <br>";
 }
 
-//Question 2 PR2
-/*
-echo "<h3>Q2</h3>";
-$games= Game::select('id')
-    ->where('name','like','Mario%')
-    ->get();
+echo "<br><br><br><br>";
 
-foreach ($games as $game){
-    $temp=$game->id;
-    $game2characters = Game2character::where('game_id', '=', $temp)->get();
-    foreach ($game2characters as $game2character){
-        $temp = $game2character->character_id;
-        $characters = Character::where('id', '=', $temp)->get();
-        foreach ($characters as $character){
-            echo "nom : $character->name <br>";
-        }
+//Question 2 PR2
+echo "<h3>Q2</h3>";
+$marioGames = Game::where('name','LIKE','Mario%')->get();
+//$charactersForMarioGame = $games->personnages;
+foreach($marioGames as $marioGame) {
+    foreach($marioGame->personnages as $personnage) {
+        echo "Personnage du jeu commençant par Mario : $personnage->name <br>";
     }
 }
-*/
+echo "<br><br><br><br>";
 //Question 3 PR3
 /*
 echo "<h3>Q3</h3>";
