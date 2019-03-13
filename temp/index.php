@@ -162,17 +162,13 @@ foreach ($games as $game){
 }*/
 
 
+
 echo "<h3>Q5</h3>";
 $games=  Game::where('name', 'LIKE','Mario%')->get();
-
-
 foreach($games as $game) {
-    $idGame = $game->id;
-    if(Game2Character::where('game_id','=',$idGame)->count() > 3) {
-
-        echo "Nom du jeu :$game->name <br>";
+    if($game->personnages()->count() > 3) {
+        echo "Jeu commençant par Mario avec au moins 4 personnages : $game->name <br>";
     }
-
 }
 
 echo "<h3>Q6</h3>";
