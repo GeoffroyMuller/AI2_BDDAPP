@@ -13,6 +13,7 @@ use gamepedia\models\Company as Company;
 use gamepedia\models\Genre as Genre;
 use gamepedia\models\Character as Character;
 use gamepedia\models\Theme as Theme;
+use gamepedia\models\Game2Character as Game2Character;
 use gamepedia\models\GameRating as GameRating;
 use gamepedia\models\RatingBoard as RatingBoard;
 use Illuminate\Database\Capsule\Manager as Manager;
@@ -140,6 +141,7 @@ foreach ($companys as $company){
     }
 }
 */
+/*
 echo "<h3>Q4</h3>";
 $games= Game::select('id','name')
     ->where('name','like','%Mario%')
@@ -156,4 +158,18 @@ foreach ($games as $game){
             echo"Rating: $rating_board->name<br>";
         }
     }
+}*/
+
+
+echo "<h3>Q5</h3>";
+$games=  Game::where('name', 'LIKE','%mario%')->get();
+
+
+foreach($games as $game) {
+    $idGame = $game->id;
+    if(Game2Character::where('game_id','=',$idGame)->count() > 3) {
+
+        echo "Nom du jeu :$game->name <br>";
+    }
+
 }
