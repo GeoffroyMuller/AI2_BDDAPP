@@ -8,7 +8,7 @@ final class Genre extends \Illuminate\Database\Eloquent\Model{
     public $timestamps = false ;
 
     public function games(){
-      return $this->belongsToMany("gamepedia\models\Game", "game2genre", "genre_id", "game_id")
+      return $this->belongsToMany("gamepedia\models\Game", "game2genre", "genre_id", "game_id");
     }
 
 

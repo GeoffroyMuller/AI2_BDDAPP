@@ -8,11 +8,11 @@ final class Game extends \Illuminate\Database\Eloquent\Model{
     public $timestamps = false ;
 
     public function company(){
-      return $this->belongsTo('gamepedia\models\Company', 'company_id')
+      return $this->belongsTo('gamepedia\models\Company', 'company_id');
     }
 
     public function platforms(){
-      return $this->belongsToMany('gamepedia\models\Platform', 'game2platform', 'game_id', 'platform_id')
+      return $this->belongsToMany('gamepedia\models\Platform', 'game2platform', 'game_id', 'platform_id');
     }
 
     public function personnagesOntFaitPremiereApparition(){

@@ -8,7 +8,7 @@ final class Platform extends \Illuminate\Database\Eloquent\Model{
     public $timestamps = false ;
 
     public function games(){
-      return $this->belongsToMany('gamepedia\models\Game', 'game2platform', 'platform_id', 'game_id')
+      return $this->belongsToMany('gamepedia\models\Game', 'game2platform', 'platform_id', 'game_id');
     }
 
     public function company(){

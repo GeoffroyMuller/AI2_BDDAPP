@@ -7,14 +7,14 @@
 
 require_once 'vendor/autoload.php';
 
-use aibdd\models\Game as Game;
-use aibdd\models\Platform as Platform;
-use aibdd\models\Company as Company;
-use aibdd\models\Game2character as Game2character;
-use aibdd\models\Character as Character;
-use aibdd\models\Game_developer as Game_developer;
-use aibdd\models\Game2rating as Game2rating;
-use aibdd\models\Rating_board as Rating_board;
+use gamepedia\models\Game as Game;
+use gamepedia\models\Platform as Platform;
+use gamepedia\models\Company as Company;
+use gamepedia\models\Genre as Genre;
+use gamepedia\models\Character as Character;
+use gamepedia\models\Theme as Theme;
+use gamepedia\models\GameRating as GameRating;
+use gamepedia\models\RatingBoard as RatingBoard;
 use Illuminate\Database\Capsule\Manager as Manager;
 
 $db = new Manager();
@@ -22,12 +22,12 @@ $db->addConnection(parse_ini_file('src/conf/conf.ini'));
 $db->setAsGlobal();
 $db->bootEloquent();
 
-
+/*
 $app = new \Slim\Slim ;
 
 $app->get('/contientMario', function(){
     echo 'Mario';
-});
+});*/
 
 
 //Question 1 : tous les jeux qui contiennent le mot Mario
@@ -90,7 +90,7 @@ for($i = 1 ; $i < $nbPages ; $i++) {
 }
 $formulaireQuestion5 .= " </select> <input type='submit' value='Valider'> </form> ";
 echo $formulaireQuestion5." </body></html> ";
-
+/*
 //Question 1 PR2
 echo "<h3>Q1</h3>";
 $game2characters = Game2character::where('game_id', '=', '12342')->get();
@@ -102,8 +102,9 @@ foreach ($game2characters as $game2character){
         echo "deck : $character->deck <br>";
     }
 }
-
+*/
 //Question 2 PR2
+/*
 echo "<h3>Q2</h3>";
 $games= Game::select('id')
     ->where('name','like','Mario%')
@@ -120,8 +121,9 @@ foreach ($games as $game){
         }
     }
 }
-
+*/
 //Question 3 PR3
+/*
 echo "<h3>Q3</h3>";
 $companys= Company::select('id')
     ->where('name','like','%Sony%')
@@ -137,7 +139,7 @@ foreach ($companys as $company){
         }
     }
 }
-
+*/
 echo "<h3>Q4</h3>";
 $games= Game::select('id','name')
     ->where('name','like','%Mario%')
@@ -145,16 +147,13 @@ $games= Game::select('id','name')
 
 foreach ($games as $game){
     $temp=$game->id;
-    $game2ratings = Game2rating::where('game_id', '=', $temp)->get();
+    $game2ratings = GameRating::where('game_id', '=', $temp)->get();
     foreach ($game2ratings as $game2rating){
         $temp=$game2rating->rating_id;
-        $rating_boards = Rating_board::where('id', '=', $temp)->get();
+        $rating_boards = RatingBoard::where('id', '=', $temp)->get();
         foreach ($rating_boards as $rating_board) {
             echo"Nom du jeu: $game->name<br>";
             echo"Rating: $rating_board->name<br>";
         }
     }
 }
-
-
-
