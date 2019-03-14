@@ -12,7 +12,7 @@ use gamepedia\models\Game as Game;
 use gamepedia\models\Platform as Platform;
 use gamepedia\models\Company as Company;
 use gamepedia\vues\VuePrincipal;
-
+use gamepedia\controleurs\ControleurCompany as ControleurCompany;
 use gamepedia\controleurs\ControleurGame as ControleurGame;
 $db = new Manager();
 $db->addConnection(parse_ini_file('src/conf/conf.ini'));
@@ -62,7 +62,7 @@ $app->get('/projet2/question/:id', function ($id){
             (new ControleurGame())->personnagesJeuxDebutMario();
             break;
         case '3':
-
+            (new ControleurCompany())->jeuxDeveloppesParSony();
             break;
         case '4':
 

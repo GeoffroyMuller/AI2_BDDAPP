@@ -18,4 +18,15 @@ class ControleurCompany
         (new VuePrincipal($res))->render();
     }
 
+    public function jeuxDeveloppesParSony() {
+        $res =  "<h3>Question n°3 : jeux développés par Sony</h3>";
+        $sonyCompanies= Company::where('name','like','%sony%')->get();
+        foreach($sonyCompanies as $sonyCompany){
+            $sonyGames = $sonyCompany->jeuxPublies;
+            foreach($sonyGames as $sonyGame) {
+                $res .= "Jeu Sony : $sonyGame->name <br>";
+            }
+        }
+        (new VuePrincipal($res))->render();
+    }
 }

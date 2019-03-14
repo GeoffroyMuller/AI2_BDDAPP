@@ -22,6 +22,7 @@ class ControleurGame
     }
 
 
+
     public function personnagesJeuxDebutMario(){
         $res = "<h3>Question n°2 : personnages des jeux commençant par mario</h3>";
         $marioGames = Game::where('name','LIKE','Mario%')->get();

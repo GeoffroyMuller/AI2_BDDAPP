@@ -39,17 +39,7 @@ echo "<br><br><br><br>";
 
 
 
-//Question 3 PR3
-echo "<h3>Q3</h3>";
-$sonyCompanies= Company::where('name','like','%sony%')->get();
-foreach($sonyCompanies as $sonyCompany){
-    //echo "test<br>";
-    $sonyGames = $sonyCompany->jeuxPublies;
-    foreach($sonyGames as $sonyGame) {
-        echo "Jeu Sony : $sonyGame->name <br>";
-    }
-}
-echo "<br><br><br><br>";
+
 
 echo "<h3>Q4</h3>";
 
