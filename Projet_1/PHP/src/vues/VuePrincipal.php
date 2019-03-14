@@ -36,37 +36,37 @@ END;
     {
         $res = "<h3>Question n°1 : liste des jeux contenant Mario dans leur titre</h3>";
         foreach($this->elements as $game) {
-            $res = $res."<p>Nom du jeu : $game->name </p>";
+            $res = $res."Nom du jeu : $game->name </br>";
         }
         return $res;
     }
     public function htmlquestionP1Q2()
     {
-        $html = <<<END
-<p>question</p>
-END;
-        return $html;
+        $res = "<h3>Question n°2 : liste des compagnies installees au japon</h3>";
+        foreach($this->elements as $company) {
+            $res = $res."Nom de la compagnie : $company->name <br>";
+        }
+        return $res;
     }
     public function htmlquestionP1Q3()
     {
-        $html = <<<END
-<p>question</p>
-END;
-        return $html;
+        $res = "<h3>Question n°3 : liste des plateformes ayant plus de 10M d'installations</h3>";
+        foreach($this->elements as $platform) {
+            $res = $res."Nom de la plateforme : $platform->name <br>";
+        }
+        return $res;
     }
     public function htmlquestionP1Q4()
     {
-        $html = <<<END
-<p>question</p>
-END;
-        return $html;
+        $res = "<h3>Question n°4 : liste de 442 jeux à partir du 21173ème</h3>";
+        $res = $res.$this->elements;
+        return $res;
     }
     public function htmlquestionP1Q5()
     {
-        $html = <<<END
-<p>question</p>
-END;
-        return $html;
+        $res = "<h3>Question n°5 : lister les jeux, afficher leur nom et deck, en paginant (taille des pages : 500)</h3>";
+        $res = $res.$this->elements;
+        return $res;
     }
 
     public function render()
