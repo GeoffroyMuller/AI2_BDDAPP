@@ -56,6 +56,6 @@ $app->get('/projet1/question/:id', function ($id) {
     {
 
     }
-});
+})->name("PROJET1");
 
 $app->run();
