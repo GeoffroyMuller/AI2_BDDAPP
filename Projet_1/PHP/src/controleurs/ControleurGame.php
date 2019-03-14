@@ -12,6 +12,29 @@ class ControleurGame
 
 
 
+  public function tempsExecutionJeuxWhere() {
+          $res = "<h3> Temps d'execution pour lister différents jeux : </h3>";
+          $tempsDepart = microtime(true);
+          $jeu = Game::where('id','=', 12)->first();
+          $tempsFin = microtime(true);
+          $duree = $tempsFin - $tempsDepart;
+          $res .= "<p>Temps d'execution jeu 12: $duree</p>";
+
+          $tempsDepart = microtime(true);
+          $jeu = Game::where('id','=', 23116)->first();
+          $tempsFin = microtime(true);
+          $duree = $tempsFin - $tempsDepart;
+          $res .= "<p>Temps d'execution jeu 23116: $duree</p>";
+
+          $tempsDepart = microtime(true);
+          $jeu = Game::where('id','=', 39421)->first();
+          $tempsFin = microtime(true);
+          $duree = $tempsFin - $tempsDepart;
+          $res .= "<p>Temps d'execution jeu 39421: $duree</p>";
+          (new VuePrincipal($res))->render();
+
+      }
+      
     public function tempsExecutionListerJeux() {
 
         $res = "<h3>Question n°1 Temps d'execution pour lister tout les jeux : </h3>";

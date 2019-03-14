@@ -87,15 +87,14 @@ $app->get('/projet3/question/:id', function ($id){
         case '1':
             (new ControleurGame())->tempsExecutionListerJeux();
             break;
-
+        case '2':
+              (new ControleurGame())->tempsExecutionListerJeuxMario();
+              break;
         case '4':
             (new ControleurGame())->tempsExecutionListerMario3Plus();
             break;
-            break;
-        case '2':
-            (new ControleurGame())->tempsExecutionListerJeuxMario();
-            break;
-
+        case '5':
+            (new ControleurGame())->tempsExecutionJeuxWhere();
             break;
         default:
             (new \gamepedia\vues\VuePrincipal("elem", "ALL_VIEW"))->render();
