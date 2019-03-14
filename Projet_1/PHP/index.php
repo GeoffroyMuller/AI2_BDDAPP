@@ -89,6 +89,11 @@ $app->get('/projet3/question/:id', function ($id){
             break;
 
             break;
+        case '2':
+            (new ControleurGame())->tempsExecutionListerJeuxMario();
+            break;
+
+            break;
         default:
             (new \gamepedia\vues\VuePrincipal("elem", "ALL_VIEW"))->render();
             break;
