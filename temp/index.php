@@ -22,52 +22,8 @@ $db->addConnection(parse_ini_file('src/conf/conf.ini'));
 $db->setAsGlobal();
 $db->bootEloquent();
 
-/*
-$app = new \Slim\Slim ;
-
-$app->get('/contientMario', function(){
-    echo 'Mario';
-});*/
 
 
-
-echo "<br><br><br><br>";
-
-
-
-
-
-
-
-
-
-echo "<h3>Q4</h3>";
-
-foreach($games as $marioGame) {
-    $ratingsMario = $marioGame->ratings;
-    foreach($ratingsMario as $ratingMario) {
-        $ratingBoard = RatingBoard::where('id', '=',$ratingMario->rating_board_id)->first();
-        echo " Rating Board : $ratingBoard->name ($ratingBoard->deck) <br>";
-        /* ->rating_board_id temporaire :: TODO :: question a fixer
-         * $ratingMario->ratingBoards; ne fonctionne pas;
-         * */
-    }
-}
-
-/* faux ancienns modeles
-foreach ($games as $game){
-    $temp=$game->id;
-    $game2ratings = GameRating::where('game_id', '=', $temp)->get();
-    foreach ($game2ratings as $game2rating){
-        $temp=$game2rating->rating_id;
-        $rating_boards = RatingBoard::where('id', '=', $temp)->get();
-        foreach ($rating_boards as $rating_board) {
-            echo"Nom du jeu: $game->name<br>";
-            echo"Rating: $rating_board->name<br>";
-        }
-    }
-}*/
-echo "<br><br><br><br>";
 
 echo "<h3>Q5</h3>";
 

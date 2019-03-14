@@ -65,7 +65,7 @@ $app->get('/projet2/question/:id', function ($id){
             (new ControleurCompany())->jeuxDeveloppesParSony();
             break;
         case '4':
-
+            (new ControleurGame())->ratingBoardMario();
             break;
         case '5':
 

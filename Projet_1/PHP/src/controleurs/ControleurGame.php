@@ -3,6 +3,7 @@
 namespace gamepedia\controleurs;
 
 use gamepedia\models\Game;
+use gamepedia\models\RatingBoard;
 use gamepedia\vues\VuePrincipal as VuePrincipal;
 use Slim\Slim as Slim;
 
@@ -21,7 +22,18 @@ class ControleurGame
 
     }
 
-
+public function ratingBoardMario() {
+    $games = Game::where('name', 'LIKE', '%mario%')->get();
+    $res = "<h3>Question n°4 : rating boards des jeux contenant Mario</h3>";
+    foreach($games as $marioGame) {
+        $ratingsMario = $marioGame->ratings;
+        foreach($ratingsMario as $ratingMario) {
+            $ratingBoard = RatingBoard::where('id', '=',$ratingMario->rating_board_id)->first();
+            $res .= " Rating Board : $ratingBoard->name ($ratingBoard->deck) <br>";
+        }
+    }
+    (new VuePrincipal($res))->render();
+}
 
     public function personnagesJeuxDebutMario(){
         $res = "<h3>Question n°2 : personnages des jeux commençant par mario</h3>";
