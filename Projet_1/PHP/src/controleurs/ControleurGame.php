@@ -154,7 +154,7 @@ public function jeuxMario3Plus() {
         $marioGames = Game::where('name','LIKE','Mario%')->get();
         foreach($marioGames as $marioGame) {
             foreach($marioGame->personnages as $personnage) {
-                $res .= "Personnage du jeu commençant par Mario : $personnage->name <br>";
+                $res1 = "Personnage du jeu commençant par Mario : $personnage->name <br>";
             }
         }
 
