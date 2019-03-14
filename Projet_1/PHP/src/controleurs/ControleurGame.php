@@ -4,6 +4,7 @@ namespace gamepedia\controleurs;
 
 use gamepedia\models\Game;
 use gamepedia\vues\VuePrincipal;
+use Slim\Slim as Slim;
 
 class ControleurGame
 {
@@ -33,10 +34,10 @@ class ControleurGame
         $idmax = Game::select('id')->get();
         $nbPages = (count($idmax) / 500) + 1;
         $numPage = 1;
-
+        $numeroPage = Slim::getInstance()->request->post('numeroPage');
         // Lors du passage avec Slim, utilisez la methode post de Slim.
-        if (isset($_POST['numeroPage'])) {
-            $numPage = $_POST['numeroPage'];
+        if (isset($numeroPage)) {
+            $numPage = $numeroPage;
         }
 
         $valeurMax = $numPage * 500;
@@ -52,7 +53,8 @@ class ControleurGame
 
         }
 
-        $formulaireQuestion5 = "<form action='index.php' method='post'><select name='numeroPage'>";
+        $urlQuestion5 = Slim::getInstance()->urlFor("Projet1_Q5");
+        $formulaireQuestion5 = "<form action='$urlQuestion5' method='post'><select name='numeroPage'>";
         for ($i = 1; $i < $nbPages; $i++) {
             $formulaireQuestion5 .= " <option value='$i'>$i</option> ";
         }

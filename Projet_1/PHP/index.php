@@ -22,35 +22,29 @@ $db->bootEloquent();
 
 $app = new \Slim\Slim;
 
-$app->get('/Principale', function () {
-    $vuePrincipal = new \gamepedia\vues\VuePrincipal("elem", "ALL_VIEW");
-    $vuePrincipal->render();
+$app->get('/', function () {
+    (new \gamepedia\vues\VuePrincipal("elem", "ALL_VIEW"))->render();
+});
+$app->get('/principale', function () {
+    (new \gamepedia\vues\VuePrincipal("elem", "ALL_VIEW"))->render();
 });
 
 $app->get('/projet1/question/:id', function ($id) {
     switch ($id) {
         case '1':
-            $c = new \gamepedia\controleurs\ControleurGame();
-            $c->afficherJeuxMario();
+            (new \gamepedia\controleurs\ControleurGame())->afficherJeuxMario();
             break;
         case '2':
-            $c = new \gamepedia\controleurs\ControleurCompany();
-            $c->compagniesJap();
+            (new \gamepedia\controleurs\ControleurCompany())->compagniesJap();
             break;
         case '3':
-            $c = new \gamepedia\controleurs\ControleurPlatform();
-            $c->grossesPlatforms();
+            (new \gamepedia\controleurs\ControleurPlatform())->grossesPlatforms();
             break;
         case '4':
-            $c = new \gamepedia\controleurs\ControleurGame();
-            $c->afficherJeuxAPartir();
-            break;
-        case '5':
-            $c = new \gamepedia\controleurs\ControleurGame();
-            $c->paginationJeux();
+            (new \gamepedia\controleurs\ControleurGame())->afficherJeuxAPartir();
             break;
         default:
-            // code...
+            (new \gamepedia\vues\VuePrincipal("elem", "ALL_VIEW"))->render();
             break;
     }
     {
@@ -58,4 +52,8 @@ $app->get('/projet1/question/:id', function ($id) {
     }
 })->name("PROJET1");
 
+
+$app->post("/projet1/question/5", function() {
+    (new \gamepedia\controleurs\ControleurGame())->paginationJeux();
+})->name("Projet1_Q5");
 $app->run();
