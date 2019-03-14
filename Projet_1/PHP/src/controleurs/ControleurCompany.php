@@ -4,7 +4,7 @@ namespace gamepedia\controleurs;
 
 use gamepedia\models\Company;
 
-class ControleurCompagny
+class ControleurCompany
 {
 
     public function compagniesJap()

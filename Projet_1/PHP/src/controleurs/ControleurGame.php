@@ -24,6 +24,7 @@ class ControleurGame
             $jeu = Game::where('id', '=', '21173' + $i)->first();
             $res = $res . "id: $jeu->id,  nom: $jeu->name <br>";
         }
+
         $vue = new \gamepedia\vues\VuePrincipal($res, "P1Q4");
         $vue->render();
     }
