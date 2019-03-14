@@ -88,6 +88,9 @@ $app->get('/projet3/question/:id', function ($id){
             (new ControleurGame())->tempsExecutionListerJeux();
             break;
 
+        case '4':
+            (new ControleurGame())->tempsExecutionListerMario3Plus();
+            break;
             break;
         default:
             (new \gamepedia\vues\VuePrincipal("elem", "ALL_VIEW"))->render();

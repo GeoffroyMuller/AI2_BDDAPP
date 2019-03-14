@@ -71,6 +71,27 @@ public function jeuxMario3Plus() {
     }
     (new VuePrincipal($res))->render();
 }
+
+    public function tempsExecutionListerMario3Plus() {
+
+        $res = "<h3> Temps d'execution pour lister tout les jeux dont le nom commence par mario et classés 3+ en rating</h3>";
+        $tempsDepart = microtime(true);
+        $marioGames = Game::where('name','LIKE','Mario%')->get();
+        foreach($marioGames as $game) {
+            $ratings = $game->ratings()->where('name','like','%3+%','and','game_id','=',$game->id)->count();
+            if($ratings >= 1) {
+                $res1 = "Jeu 3+ commençant par Mario : $game->name <br>";
+            }
+
+        }
+        $tempsFin = microtime(true);
+
+        $duree = $tempsFin - $tempsDepart;
+
+        $res .= "<p>Temps d'execution : $duree</p>";
+        (new VuePrincipal($res))->render();
+    }
+
     public function personnagesJeuxDebutMario(){
         $res = "<h3>Question n°2 : personnages des jeux commençant par mario</h3>";
         $marioGames = Game::where('name','LIKE','Mario%')->get();
