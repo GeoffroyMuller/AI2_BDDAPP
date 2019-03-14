@@ -16,7 +16,7 @@ class ControleurGame
 
         $res = "<h3> Temps d'execution pour lister tout les jeux : </h3>";
         $tempsDepart = microtime(true);
-        $jeux = Game::select('*')->get();
+        $jeux = Game::all();
         $tempsFin = microtime(true);
 
         $duree = $tempsFin - $tempsDepart;

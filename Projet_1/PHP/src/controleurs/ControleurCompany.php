@@ -7,7 +7,6 @@ use \gamepedia\vues\VuePrincipal as VuePrincipal;
 
 class ControleurCompany
 {
-
     public function compagniesJap()
     {
         $res = "<h3>Question n°2 : liste des compagnies installees au japon</h3>";
