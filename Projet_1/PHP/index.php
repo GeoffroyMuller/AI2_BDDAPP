@@ -13,7 +13,7 @@ use gamepedia\models\Platform as Platform;
 use gamepedia\models\Company as Company;
 use gamepedia\vues\VuePrincipal;
 
-
+use gamepedia\controleurs\ControleurGame as ControleurGame;
 $db = new Manager();
 $db->addConnection(parse_ini_file('src/conf/conf.ini'));
 $db->setAsGlobal();
@@ -50,10 +50,37 @@ $app->get('/projet1/question/:id', function ($id) {
             (new \gamepedia\vues\VuePrincipal("elem", "ALL_VIEW"))->render();
             break;
     }
-    {
-
-    }
 })->name("PROJET1");
+
+
+$app->get('/projet2/question/:id', function ($id){
+    switch ($id) {
+        case '1':
+            (new ControleurGame())->personnagesJeu12342();
+            break;
+        case '2':
+
+            break;
+        case '3':
+
+            break;
+        case '4':
+
+            break;
+        case '5':
+
+            break;
+        case '6':
+
+            break;
+        case '7':
+
+            break;
+        default:
+            (new \gamepedia\vues\VuePrincipal("elem", "ALL_VIEW"))->render();
+            break;
+    }
+})->name("PROJET2");
 
 
 $app->post("/projet1/question/5", function() {
