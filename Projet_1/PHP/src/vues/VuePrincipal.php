@@ -1,6 +1,4 @@
-
 <?php
-
 namespace gamepedia\vues;
 
 use Slim\Slim as Slim;
