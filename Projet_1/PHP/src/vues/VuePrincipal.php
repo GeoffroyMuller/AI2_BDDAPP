@@ -35,6 +35,7 @@ class VuePrincipal
 
         $urlProjet3Question1 = $app->urlFor("PROJET3",['id' => 1]);
         $urlProjet3Question2 = $app->urlFor("PROJET3",['id' => 2]);
+        $urlProjet3Question4 = $app->urlFor("PROJET3",['id' => 4]);
             $html = <<<END
                 <h3>Projet 1</h3>
                 <ul>
@@ -58,6 +59,7 @@ class VuePrincipal
                 <ul>
                     <li><a href="$urlProjet3Question1">Question 1</a></li>
                     <li><a href="$urlProjet3Question2">Question 2</a></li>
+                    <li><a href="$urlProjet3Question4">Question 4</a></li>
                 </ul>
 END;
 
