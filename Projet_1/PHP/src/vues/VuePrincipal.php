@@ -2,29 +2,38 @@
 
 namespace gamepedia\vues;
 
+use Slim\Slim as Slim;
+
 class VuePrincipal
 {
     private $elements;
     private $selecteur;
     private $app;
-
+    private $urlServeur;
     public function __construct($tabAffichage, $selecteur)
     {
         $this->elements = $tabAffichage;
         $this->selecteur = $selecteur;
         $this->app = \Slim\Slim::getInstance();
+        $this->urlServeur =  Slim::getInstance()->request()->getRootUri();
     }
 
     public function htmlquestion()
     {
+        $urlQuestion1 = Slim::getInstance()->urlFor("PROJET1",['id' => 1]);
+        $urlQuestion2 = Slim::getInstance()->urlFor("PROJET1",['id' => 2]);
+        $urlQuestion3 = Slim::getInstance()->urlFor("PROJET1",['id' => 3]);
+        $urlQuestion4 = Slim::getInstance()->urlFor("PROJET1",['id' => 4]);
+        $urlQuestion5 = Slim::getInstance()->urlFor("PROJET1",['id' => 5]);
+
             $html = <<<END
 <h3>Projet 1</h3>
 <ul>
-  <li><a href="/projet1/question/1">Question 1</a></li>
-  <li><a href="/projet1/question/2">Question 2</a></li>
-  <li><a href="/projet1/question/3">Question 3</a></li>
-  <li><a href="/projet1/question/4">Question 4</a></li>
-  <li><a href="/projet1/question/5">Question 5</a></li>
+  <li><a href="$urlQuestion1">Question 1</a></li>
+  <li><a href="$urlQuestion2">Question 2</a></li>
+  <li><a href="$urlQuestion3">Question 3</a></li>
+  <li><a href="$urlQuestion4">Question 4</a></li>
+  <li><a href="$urlQuestion5">Question 5</a></li>
 </ul>
 <h3>Projet 2</h3>
 END;
@@ -103,10 +112,11 @@ END;
                     break;
                 }
         }
+
         $html = <<<END
 <!DOCTYPE html>
 <html>
-<head><a href="/Principale">accueil</a></head>
+<head><a href="$this->urlServeur/Principale">accueil</a></head>
 <body>
  
 <div>
