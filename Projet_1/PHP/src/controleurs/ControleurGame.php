@@ -20,6 +20,18 @@ class ControleurGame
         (new VuePrincipal($res))->render();
 
     }
+
+
+    public function personnagesJeuxDebutMario(){
+        $res = "<h3>Question n°2 : personnages des jeux commençant par mario</h3>";
+        $marioGames = Game::where('name','LIKE','Mario%')->get();
+        foreach($marioGames as $marioGame) {
+            foreach($marioGame->personnages as $personnage) {
+                $res .= "Personnage du jeu commençant par Mario : $personnage->name <br>";
+            }
+        }
+        (new VuePrincipal($res))->render();
+    }
     public function afficherJeuxMario()
     {
         $res = "<h3>Question n°1 : liste des jeux contenant Mario dans leur titre</h3>";

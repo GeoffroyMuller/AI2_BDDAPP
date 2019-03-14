@@ -30,26 +30,10 @@ $app->get('/contientMario', function(){
 });*/
 
 
-//Question 1 PR2
-echo "<h3>Q1</h3>";
-$jeu = Game::where('id','=','12342')->first();
-$charactersFor12342 = $jeu->personnages;
-foreach($charactersFor12342 as $character) {
-   echo "Personnage : $character->name || Deck : $character->deck <br>";
-}
 
 echo "<br><br><br><br>";
 
-//Question 2 PR2
-echo "<h3>Q2</h3>";
-$marioGames = Game::where('name','LIKE','Mario%')->get();
-//$charactersForMarioGame = $games->personnages;
-foreach($marioGames as $marioGame) {
-    foreach($marioGame->personnages as $personnage) {
-        echo "Personnage du jeu commençant par Mario : $personnage->name <br>";
-    }
-}
-echo "<br><br><br><br>";
+
 
 
 

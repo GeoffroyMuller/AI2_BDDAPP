@@ -59,7 +59,7 @@ $app->get('/projet2/question/:id', function ($id){
             (new ControleurGame())->personnagesJeu12342();
             break;
         case '2':
-
+            (new ControleurGame())->personnagesJeuxDebutMario();
             break;
         case '3':
 
