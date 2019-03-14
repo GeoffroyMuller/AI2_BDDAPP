@@ -36,6 +36,7 @@ class VuePrincipal
   <li><a href="$urlQuestion5">Question 5</a></li>
 </ul>
 <h3>Projet 2</h3>
+<h3>Projet 3</h3>
 END;
 
         return $html;
