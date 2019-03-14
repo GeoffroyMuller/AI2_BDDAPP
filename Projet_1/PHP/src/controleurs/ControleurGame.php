@@ -34,7 +34,7 @@ class ControleurGame
           (new VuePrincipal($res))->render();
 
       }
-      
+
     public function tempsExecutionListerJeux() {
 
         $res = "<h3>Question n°1 Temps d'execution pour lister tout les jeux : </h3>";
@@ -143,6 +143,27 @@ public function jeuxMario3Plus() {
         foreach($games as $game) {
             $res .= "Nom du jeu : $game->name </br>";
         }
+        (new VuePrincipal($res))->render();
+    }
+
+    public function tempsExecutionPersosMario()
+    {
+        $res = "<h3>Temps d'execution pour afficher les personnages des jeux commencant par Mario";
+        $tempsDepart = microtime(true);
+
+        $marioGames = Game::where('name','LIKE','Mario%')->get();
+        foreach($marioGames as $marioGame) {
+            foreach($marioGame->personnages as $personnage) {
+                $res .= "Personnage du jeu commençant par Mario : $personnage->name <br>";
+            }
+        }
+
+        $tempsFin = microtime(true);
+
+        $duree = $tempsFin - $tempsDepart;
+
+        $res .= "<p>Temps d'execution : $duree</p>";
+
         (new VuePrincipal($res))->render();
     }
 

@@ -90,6 +90,8 @@ $app->get('/projet3/question/:id', function ($id){
         case '2':
               (new ControleurGame())->tempsExecutionListerJeuxMario();
               break;
+        case '3':
+              (new ControleurGame())->tempsExecutionPersosMario()();
         case '4':
             (new ControleurGame())->tempsExecutionListerMario3Plus();
             break;
