@@ -82,7 +82,18 @@ $app->get('/projet2/question/:id', function ($id){
     }
 })->name("PROJET2");
 
+$app->get('/projet3/question/:id', function ($id){
+    switch ($id) {
+        case '1':
+            (new ControleurGame())->tempsExecutionListerJeux();
+            break;
 
+            break;
+        default:
+            (new \gamepedia\vues\VuePrincipal("elem", "ALL_VIEW"))->render();
+            break;
+    }
+})->name("PROJET3");
 $app->post("/projet1/question/5", function() {
     (new \gamepedia\controleurs\ControleurGame())->paginationJeux();
 })->name("Projet1_Q5");

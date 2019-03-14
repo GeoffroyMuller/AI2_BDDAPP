@@ -11,6 +11,19 @@ class ControleurGame
 {
 
 
+
+    public function tempsExecutionListerJeux() {
+
+        $res = "<h3> Temps d'execution pour lister tout les jeux : </h3>";
+        $tempsDepart = microtime(true);
+        $jeux = Game::select('*')->get();
+        $tempsFin = microtime(true);
+
+        $duree = $tempsFin - $tempsDepart;
+
+        $res .= "<p>Temps d'execution : $duree</p>";
+        (new VuePrincipal($res))->render();
+    }
     public function personnagesJeu12342() {
         $res = "<h3>Question n°1 : personnages du jeu 12342</h3>";
         $jeu = Game::where('id','=','12342')->first();
