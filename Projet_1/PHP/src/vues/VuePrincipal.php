@@ -24,7 +24,7 @@ class VuePrincipal
         $urlQuestion2 = Slim::getInstance()->urlFor("PROJET1",['id' => 2]);
         $urlQuestion3 = Slim::getInstance()->urlFor("PROJET1",['id' => 3]);
         $urlQuestion4 = Slim::getInstance()->urlFor("PROJET1",['id' => 4]);
-        $urlQuestion5 = Slim::getInstance()->urlFor("PROJET1",['id' => 5]);
+        $urlQuestion5 = Slim::getInstance()->urlFor("Projet1_Q5");
 
             $html = <<<END
 <h3>Projet 1</h3>
