@@ -35,6 +35,29 @@ public function ratingBoardMario() {
     (new VuePrincipal($res))->render();
 }
 
+public function jeuxDebutMario4Persos() {
+    $res = "<h3>Question n°5 : jeux dont le nom commence par Mario avec au moins 4 personnaes</h3>";
+    $marioGames = Game::where('name','LIKE','Mario%')->get();
+    foreach($marioGames as $game) {
+        if($game->personnages()->count() > 3) {
+            $res .= "Jeu commençant par Mario avec au moins 4 personnages : $game->name <br>";
+        }
+    }
+    (new VuePrincipal($res))->render();
+}
+
+public function jeuxMario3Plus() {
+    $res = "<h3>Question n°6 : jeux dont le nom commence par mario et classés 3+ en rating</h3>";
+    $marioGames = Game::where('name','LIKE','Mario%')->get();
+    foreach($marioGames as $game) {
+        $ratings = $game->ratings()->where('name','like','%3+%','and','game_id','=',$game->id)->count();
+        if($ratings >= 1) {
+            $res .= "Jeu 3+ commençant par Mario : $game->name <br>";
+        }
+
+    }
+    (new VuePrincipal($res))->render();
+}
     public function personnagesJeuxDebutMario(){
         $res = "<h3>Question n°2 : personnages des jeux commençant par mario</h3>";
         $marioGames = Game::where('name','LIKE','Mario%')->get();

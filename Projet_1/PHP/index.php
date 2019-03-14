@@ -68,13 +68,13 @@ $app->get('/projet2/question/:id', function ($id){
             (new ControleurGame())->ratingBoardMario();
             break;
         case '5':
-
+            (new ControleurGame())->jeuxDebutMario4Persos();
             break;
         case '6':
-
+            (new ControleurGame())->jeuxMario3Plus();
             break;
         case '7':
-
+            (new ControleurCompany())->jeuxCompagniesInc3Plus();
             break;
         default:
             (new \gamepedia\vues\VuePrincipal("elem", "ALL_VIEW"))->render();
