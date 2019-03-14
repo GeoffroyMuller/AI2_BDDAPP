@@ -43,6 +43,9 @@ $app->get('/projet1/question/:id', function ($id) {
         case '4':
             (new \gamepedia\controleurs\ControleurGame())->afficherJeuxAPartir();
             break;
+        case '5':
+            (new \gamepedia\controleurs\ControleurGame())->paginationJeux();
+            break;
         default:
             (new \gamepedia\vues\VuePrincipal("elem", "ALL_VIEW"))->render();
             break;
