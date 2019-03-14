@@ -116,7 +116,7 @@ END;
         $html = <<<END
 <!DOCTYPE html>
 <html>
-<head><a href="$this->urlServeur/Principale">accueil</a></head>
+<head><a href="$this->urlServeur">accueil</a></head>
 <body>
  
 <div>
