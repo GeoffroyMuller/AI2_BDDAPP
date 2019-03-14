@@ -53,7 +53,7 @@ class VuePrincipal
                     <li><a href="$urlProjet2Question6">Question 6</a></li>
                     <li><a href="$urlProjet2Question7">Question 7</a></li>
                 </ul>
-            <h3>Projet 2</h3>
+            <h3>Projet 3</h3>
                 <ul>
                     <li><a href="$urlProjet3Question1">Question 1</a></li>
                 </ul>
