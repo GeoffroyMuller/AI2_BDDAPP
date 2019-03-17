@@ -17,6 +17,9 @@ $db->addConnection(parse_ini_file('src/conf/conf.ini'));
 $db->setAsGlobal();
 $db->bootEloquent();
 
+// On active le log des requetes SQL
+$db::connection()->enableQueryLog();
+
 
 $app = new \Slim\Slim;
 
@@ -88,6 +91,9 @@ $app->get('/projet3/question/:id', function ($id){
         case '2':
               (new ControleurGame())->tempsExecutionListerJeuxMario();
               break;
+        case '3':
+            (new ControleurGame())->tempsExecutionPersosMario()();
+            break;
         case '4':
             (new ControleurGame())->tempsExecutionListerMario3Plus();
             break;
