@@ -10,31 +10,45 @@ use Slim\Slim as Slim;
 class ControleurGame
 {
 
+    /*
+     AVANT INDEX :
 
 
+
+
+    // Ajout de l'index CREATE INDEX `index_game_names` ON `game` (`name`);
+    APRES INDEX :
+
+
+
+     */
   public function tempsExecutionJeuxWhere() {
           $res = "<h3> Temps d'execution pour lister différents jeux : </h3>";
           $tempsDepart = microtime(true);
-          $jeu = Game::where('id','=', 12)->first();
+          $jeu = Game::where('name','LIKE', 'Mario%')->first();
           $tempsFin = microtime(true);
           $duree = $tempsFin - $tempsDepart;
-          $res .= "<p>Temps d'execution jeu 12: $duree</p>";
+          $res .= "<p>Temps d'execution jeux mario : $duree</p>";
 
           $tempsDepart = microtime(true);
-          $jeu = Game::where('id','=', 23116)->first();
+          $jeu = Game::where('name','LIKE', 'Racing%')->first();
           $tempsFin = microtime(true);
           $duree = $tempsFin - $tempsDepart;
-          $res .= "<p>Temps d'execution jeu 23116: $duree</p>";
+          $res .= "<p>Temps d'execution jeux racing: $duree</p>";
 
           $tempsDepart = microtime(true);
-          $jeu = Game::where('id','=', 39421)->first();
+          $jeu = Game::where('name','LIKE', '3-D')->first();
           $tempsFin = microtime(true);
           $duree = $tempsFin - $tempsDepart;
-          $res .= "<p>Temps d'execution jeu 39421: $duree</p>";
+          $res .= "<p>Temps d'execution jeux 3-D: $duree</p>
+                   <br><h3>Utilisation de l'index : </h3><p>L'utilisation de l'index a démontré lors de nos tests le résultat suivant : </p>
+                   <br><h5>Avant l'index : </h5><p>Temps d'execution jeux mario : 0.019865036010742<br>Temps d'execution jeux racing: 0.0016639232635498<br>Temps d'execution jeux 3-D: 0.15950608253479</p>
+                   <br><h5>Apres l'index : </h5><p>Temps d'execution jeux mario : 0.011046007156372<br>Temps d'execution jeux racing: 0.0012261867523193<br>Temps d'execution jeux 3-D: 0.00049304962158203</p>
+                   <br><p> On remarque un gain considérable de temps pour la troisième requête.</p>";
           (new VuePrincipal($res))->render();
 
       }
-
+      
     public function tempsExecutionListerJeux() {
 
         $res = "<h3>Question n°1 Temps d'execution pour lister tout les jeux : </h3>";
@@ -143,27 +157,6 @@ public function jeuxMario3Plus() {
         foreach($games as $game) {
             $res .= "Nom du jeu : $game->name </br>";
         }
-        (new VuePrincipal($res))->render();
-    }
-
-    public function tempsExecutionPersosMario()
-    {
-        $res = "<h3>Temps d'execution pour afficher les personnages des jeux commencant par Mario";
-        $tempsDepart = microtime(true);
-
-        $marioGames = Game::where('name','LIKE','Mario%')->get();
-        foreach($marioGames as $marioGame) {
-            foreach($marioGame->personnages as $personnage) {
-                $res1 = "Personnage du jeu commençant par Mario : $personnage->name <br>";
-            }
-        }
-
-        $tempsFin = microtime(true);
-
-        $duree = $tempsFin - $tempsDepart;
-
-        $res .= "<p>Temps d'execution : $duree</p>";
-
         (new VuePrincipal($res))->render();
     }
 

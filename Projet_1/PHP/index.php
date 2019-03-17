@@ -8,12 +8,10 @@
 require_once 'vendor/autoload.php';
 
 use Illuminate\Database\Capsule\Manager as Manager;
-use gamepedia\models\Game as Game;
-use gamepedia\models\Platform as Platform;
-use gamepedia\models\Company as Company;
-use gamepedia\vues\VuePrincipal;
+use gamepedia\vues\VuePrincipal as VuePrincipal;
 use gamepedia\controleurs\ControleurCompany as ControleurCompany;
 use gamepedia\controleurs\ControleurGame as ControleurGame;
+use gamepedia\controleurs\ControleurPlatform as ControleurPlatform;
 $db = new Manager();
 $db->addConnection(parse_ini_file('src/conf/conf.ini'));
 $db->setAsGlobal();
@@ -23,31 +21,31 @@ $db->bootEloquent();
 $app = new \Slim\Slim;
 
 $app->get('/', function () {
-    (new \gamepedia\vues\VuePrincipal("elem", "ALL_VIEW"))->render();
+    (new VuePrincipal("<h3>Accueil</h3>"))->render();
 });
 $app->get('/principale', function () {
-    (new \gamepedia\vues\VuePrincipal("elem", "ALL_VIEW"))->render();
+    (new VuePrincipal("<h3>Accueil</h3>"))->render();
 });
 
 $app->get('/projet1/question/:id', function ($id) {
     switch ($id) {
         case '1':
-            (new \gamepedia\controleurs\ControleurGame())->afficherJeuxMario();
+            (new ControleurGame())->afficherJeuxMario();
             break;
         case '2':
-            (new \gamepedia\controleurs\ControleurCompany())->compagniesJap();
+            (new ControleurCompany())->compagniesJap();
             break;
         case '3':
-            (new \gamepedia\controleurs\ControleurPlatform())->grossesPlatforms();
+            (new ControleurPlatform())->grossesPlatforms();
             break;
         case '4':
-            (new \gamepedia\controleurs\ControleurGame())->afficherJeuxAPartir();
+            (new ControleurGame())->afficherJeuxAPartir();
             break;
         case '5':
-            (new \gamepedia\controleurs\ControleurGame())->paginationJeux();
+            (new ControleurGame())->paginationJeux();
             break;
         default:
-            (new \gamepedia\vues\VuePrincipal("elem", "ALL_VIEW"))->render();
+            (new VuePrincipal("<h3>Accueil</h3>"))->render();
             break;
     }
 })->name("PROJET1");
@@ -77,7 +75,7 @@ $app->get('/projet2/question/:id', function ($id){
             (new ControleurCompany())->jeuxCompagniesInc3Plus();
             break;
         default:
-            (new \gamepedia\vues\VuePrincipal("elem", "ALL_VIEW"))->render();
+            (new VuePrincipal("elem"))->render();
             break;
     }
 })->name("PROJET2");
@@ -90,9 +88,6 @@ $app->get('/projet3/question/:id', function ($id){
         case '2':
               (new ControleurGame())->tempsExecutionListerJeuxMario();
               break;
-        case '3':
-              (new ControleurGame())->tempsExecutionPersosMario();
-              break;
         case '4':
             (new ControleurGame())->tempsExecutionListerMario3Plus();
             break;
@@ -100,11 +95,15 @@ $app->get('/projet3/question/:id', function ($id){
             (new ControleurGame())->tempsExecutionJeuxWhere();
             break;
         default:
-            (new \gamepedia\vues\VuePrincipal("elem", "ALL_VIEW"))->render();
+            (new \gamepedia\vues\VuePrincipal("elem"))->render();
             break;
     }
 })->name("PROJET3");
+
 $app->post("/projet1/question/5", function() {
     (new \gamepedia\controleurs\ControleurGame())->paginationJeux();
 })->name("Projet1_Q5");
+
+
+
 $app->run();
