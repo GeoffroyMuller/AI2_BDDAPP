@@ -15,8 +15,8 @@ final class Game extends \Illuminate\Database\Eloquent\Model{
       return $this->belongsToMany('gamepedia\models\Platform', 'game2platform', 'game_id', 'platform_id');
     }
 
-    public function personnagesOntFaitPremiereApparition(){
-        return $this->hasMany("gamepedia\models\Character", "first_appeared_in_game_id");
+    public function personnagesFirstApparition(){
+        return $this->belongsTo("gamepedia\models\Character", "first_appeared_in_game_id");
     }
 
     public function personnages(){

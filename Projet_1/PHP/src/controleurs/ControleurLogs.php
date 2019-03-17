@@ -43,7 +43,11 @@ class ControleurLogs
     }
 
     public function log3(){
-      $this->logs();
+        $mariogames = Game::where('name','like','%mario%')->get();
+        foreach($mariogames as $mariogame) {
+            $charsJeu = $mariogame->personnagesFirstApparition()->get();
+        }
+        $this->logs();
     }
 
     public function log4(){
