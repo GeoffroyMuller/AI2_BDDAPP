@@ -1,0 +1,11 @@
+1. Faker s'installe a l'aide de composer (composer require fzaninotto/faker)
+2. Exemple de code : 
+
+$faker = Faker\Factory::create('en_US'); // en US pour generer une adresse americaine par la suite
+echo $faker->address;
+
+
+3. 
+$date = new DateTime("2017-02-16 16:15:13");
+$dateFormattee = $date->format('Y/m/d (H:i)');
+echo $dateFormattee;
