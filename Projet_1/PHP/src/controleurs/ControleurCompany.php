@@ -28,10 +28,10 @@ class ControleurCompany
             }
         }
 
-
         (new VuePrincipal($res))->render();
-        dd(Manager::getQueryLog());
+
     }
+
 
     public function jeuxCompagniesInc3Plus() {
         $res = "<h3>Question n°7 : jeux 3+ developpes par inc contenant Mario</h3>";

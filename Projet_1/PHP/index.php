@@ -12,7 +12,7 @@ use gamepedia\vues\VuePrincipal as VuePrincipal;
 use gamepedia\controleurs\ControleurCompany as ControleurCompany;
 use gamepedia\controleurs\ControleurGame as ControleurGame;
 use gamepedia\controleurs\ControleurPlatform as ControleurPlatform;
-use gamepedia\logs\Logs as Logs;
+use gamepedia\controleurs\ControleurLogs as ControleurLogs;
 $db = new Manager();
 $db->addConnection(parse_ini_file('src/conf/conf.ini'));
 $db->setAsGlobal();
@@ -35,11 +35,10 @@ $app->get('/projet1/question/:id', function ($id) {
     switch ($id) {
         case '1':
             (new ControleurGame())->afficherJeuxMario();
-            
+
             break;
         case '2':
             (new ControleurCompany())->compagniesJap();
-            (new Logs())->boot();
             break;
         case '3':
             (new ControleurPlatform())->grossesPlatforms();
@@ -61,14 +60,13 @@ $app->get('/projet2/question/:id', function ($id){
     switch ($id) {
         case '1':
             (new ControleurGame())->personnagesJeu12342();
-            $requetes = Manager::connection()->getQueryLog();
-            dd($requetes);
             break;
         case '2':
             (new ControleurGame())->personnagesJeuxDebutMario();
             break;
         case '3':
             (new ControleurCompany())->jeuxDeveloppesParSony();
+
             break;
         case '4':
             (new ControleurGame())->ratingBoardMario();
@@ -94,8 +92,8 @@ $app->get('/projet3/question/:id', function ($id){
             (new ControleurGame())->tempsExecutionListerJeux();
             break;
         case '2':
-              (new ControleurGame())->tempsExecutionListerJeuxMario();
-              break;
+            (new ControleurGame())->tempsExecutionListerJeuxMario();
+            break;
         case '3':
             (new ControleurGame())->tempsExecutionPersosMario()();
             break;
@@ -104,6 +102,21 @@ $app->get('/projet3/question/:id', function ($id){
             break;
         case '5':
             (new ControleurGame())->tempsExecutionJeuxWhere();
+            break;
+        case '6':
+            (new ControleurLogs())->log1();
+            break;
+        case '7':
+            (new ControleurLogs())->log2();
+            break;
+        case '8':
+            (new ControleurLogs())->log3();
+            break;
+        case '9':
+            (new ControleurLogs())->log4();
+            break;
+        case '10':
+            (new ControleurLogs())->log5();
             break;
         default:
             (new \gamepedia\vues\VuePrincipal("Aucune question correspond à ce numéro"))->render();
