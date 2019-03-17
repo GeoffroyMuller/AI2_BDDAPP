@@ -4,6 +4,7 @@ namespace gamepedia\controleurs;
 
 use gamepedia\models\Company;
 use \gamepedia\vues\VuePrincipal as VuePrincipal;
+use Illuminate\Database\Capsule\Manager as Manager;
 
 class ControleurCompany
 {
@@ -26,7 +27,10 @@ class ControleurCompany
                 $res .= "Jeu Sony : $sonyGame->name <br>";
             }
         }
+
+
         (new VuePrincipal($res))->render();
+        dd(Manager::getQueryLog());
     }
 
     public function jeuxCompagniesInc3Plus() {
