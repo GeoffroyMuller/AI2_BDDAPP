@@ -118,6 +118,9 @@ $app->get('/projet3/question/:id', function ($id){
         case '10':
             (new ControleurLogs())->log5();
             break;
+        case '11':
+            (new ControleurLogs())->log4bis();
+            break;
         default:
             (new \gamepedia\vues\VuePrincipal("Aucune question correspond à ce numéro"))->render();
             break;

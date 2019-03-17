@@ -3,6 +3,7 @@
 namespace gamepedia\controleurs;
 
 use gamepedia\models\Company;
+use gamepedia\models\Character;
 use gamepedia\models\Game;
 use gamepedia\models\RatingBoard;
 
@@ -50,6 +51,13 @@ class ControleurLogs
           foreach($marioGame->personnages as $personnage) {
           }
       }
+      $this->logs();
+    }
+
+    public function log4bis(){
+      //$test = Company::with('jeuxPublies')->get();
+
+      $test2 = Company::with('jeuxPublies')->get();
       $this->logs();
     }
 
