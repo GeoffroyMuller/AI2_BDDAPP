@@ -5,6 +5,7 @@ namespace gamepedia\controleurs;
 use gamepedia\models\Company;
 use gamepedia\models\Character;
 use gamepedia\models\Game;
+use gamepedia\models\Platform;
 use gamepedia\models\RatingBoard;
 
 use Illuminate\Database\Capsule\Manager as Manager;
@@ -55,10 +56,15 @@ class ControleurLogs
     }
 
     public function log4bis(){
-      //$test = Company::with('jeuxPublies')->get();
+      $test = Game::where('name','LIKE','Mario%')->with('personnages')->get();
 
-      $test2 = Company::with('jeuxPublies')->get();
+      foreach ($test as $ui) {
+        foreach($ui->personnages as $personnage) {
+        }
+      }
+
       $this->logs();
+
     }
 
     public function log5(){
@@ -67,6 +73,15 @@ class ControleurLogs
           $sonyGames = $sonyCompany->jeuxPublies;
           foreach($sonyGames as $sonyGame) {
           }
+      }
+      $this->logs();
+    }
+
+    public function log5bis(){
+      $sonyCompanies= Company::where('name','like','%sony%')->with('jeuxPublies')->get();
+      foreach ($sonyCompanies as $sony) {
+        foreach ($sony->jeuxPublies as $jeu) {
+        }
       }
       $this->logs();
     }

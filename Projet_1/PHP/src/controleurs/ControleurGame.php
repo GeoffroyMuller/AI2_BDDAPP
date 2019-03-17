@@ -166,14 +166,29 @@ public function jeuxMario3Plus() {
 
     public function personnagesJeuxDebutMario(){
         $res = "<h3>Question n°2 : personnages des jeux commençant par mario</h3>";
-        $marioGames = Game::where('name','LIKE','Mario%')->get();
+        $marioGames = Game::where('name','LIKE','Mario%')->distinct()->get();
         foreach($marioGames as $marioGame) {
             foreach($marioGame->personnages as $personnage) {
                 $res .= "Personnage du jeu commençant par Mario : $personnage->name <br>";
             }
         }
+
         (new VuePrincipal($res))->render();
     }
+
+    public function personnagesJeuxDebutMarioOpti(){
+        $res = "<h3>Question n°2 : personnages des jeux commençant par mario</h3>";
+        $games = Game::where('name','LIKE','Mario%')->with('personnages')->get();
+
+        foreach ($games as $game) {
+          foreach($game->personnages as $personnage) {
+            $res .= "Personnage du jeu commençant par Mario :$personnage->name <br>";
+          }
+        }
+
+        (new VuePrincipal($res))->render();
+    }
+
     public function afficherJeuxMario()
     {
         $res = "<h3>Question n°1 : liste des jeux contenant Mario dans leur titre</h3>";

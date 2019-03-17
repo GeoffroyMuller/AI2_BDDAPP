@@ -3,6 +3,7 @@
 namespace gamepedia\controleurs;
 
 use gamepedia\models\Company;
+use gamepedia\models\Game;
 use \gamepedia\vues\VuePrincipal as VuePrincipal;
 use Illuminate\Database\Capsule\Manager as Manager;
 
@@ -26,6 +27,19 @@ class ControleurCompany
             foreach($sonyGames as $sonyGame) {
                 $res .= "Jeu Sony : $sonyGame->name <br>";
             }
+        }
+
+        (new VuePrincipal($res))->render();
+
+    }
+
+    public function jeuxDeveloppesParSonyOpti() {
+        $res =  "<h3>Question n°3 : jeux développés par Sony</h3>";
+        $sonyCompanies= Company::where('name','like','%sony%')->with('jeuxPublies')->get();
+        foreach ($sonyCompanies as $sony) {
+          foreach ($sony->jeuxPublies as $jeu) {
+            $res .= "Jeu Sony : $jeu->name <br>";
+          }
         }
 
         (new VuePrincipal($res))->render();

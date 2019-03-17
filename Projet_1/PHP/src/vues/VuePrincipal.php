@@ -43,6 +43,9 @@ class VuePrincipal
         $urlProjet3Question9 = $app->urlFor("PROJET3",['id' => 9]);
         $urlProjet3Question10 = $app->urlFor("PROJET3",['id' => 10]);
         $urlProjet3Question11 = $app->urlFor("PROJET3",['id' => 11]);
+        $urlProjet3Question12 = $app->urlFor("PROJET3",['id' => 12]);
+        $urlProjet3Question13 = $app->urlFor("PROJET3",['id' => 13]);
+        $urlProjet3Question14 = $app->urlFor("PROJET3",['id' => 14]);
             $html = <<<END
                 <h3>Projet 1</h3>
                 <ul>
@@ -73,8 +76,11 @@ class VuePrincipal
                     <li><a href="$urlProjet3Question7">Logs nom des personnages du jeu 12342</a></li>
                     <li><a href="$urlProjet3Question8">Logs nom des personnages apparus pour la 1ere fois dans un jeu Mario</a></li>
                     <li><a href="$urlProjet3Question9">Logs nom des personnages de Mario</a></li>
-                    <li><a href="$urlProjet3Question11">Logs opti</a></li>
                     <li><a href="$urlProjet3Question10">Logs jeux développé par Sony</a></li>
+                    <li><a href="$urlProjet3Question12">Nom des personnages de Mario - chargement lié</a></li>
+                    <li><a href="$urlProjet3Question11">Logs nom des personnages de Mario - chargement lié</a></li>
+                    <li><a href="$urlProjet3Question13">Jeux développé par Sony chargement lié</a></li>
+                    <li><a href="$urlProjet3Question14">Logs jeux développé par Sony - chargement lié</a></li>
                 </ul>
 END;
 

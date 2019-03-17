@@ -121,6 +121,15 @@ $app->get('/projet3/question/:id', function ($id){
         case '11':
             (new ControleurLogs())->log4bis();
             break;
+        case '12':
+            (new ControleurGame())->personnagesJeuxDebutMarioOpti();
+            break;
+        case '13':
+            (new ControleurCompany())->jeuxDeveloppesParSonyOpti();
+            break;
+        case '14':
+            (new ControleurLogs())->log5bis();
+            break;
         default:
             (new \gamepedia\vues\VuePrincipal("Aucune question correspond à ce numéro"))->render();
             break;
