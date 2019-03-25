@@ -3,7 +3,6 @@ CREATE TABLE `user` (
   `mail` varchar(128) NOT NULL,
   `lastname` varchar(128) NOT NULL,
   `firstname` varchar(128) DEFAULT NULL,
-  `last_name` varchar(128) DEFAULT NULL,
   `address` varchar(256) DEFAULT NULL,
   `phone` varchar(64) DEFAULT NULL,
   `born` datetime DEFAULT NULL,
