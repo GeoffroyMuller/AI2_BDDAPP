@@ -7,6 +7,7 @@
 
 require_once 'vendor/autoload.php';
 
+use gamepedia\controleurs\ControleurUser;
 use Illuminate\Database\Capsule\Manager as Manager;
 use gamepedia\vues\VuePrincipal as VuePrincipal;
 use gamepedia\controleurs\ControleurCompany as ControleurCompany;
@@ -139,6 +140,7 @@ $app->get('/projet3/question/:id', function ($id){
 $app->get('/projet4/question/:id', function ($id){
     switch($id) {
         case '1':
+            (new ControleurUser())->createUsersAndCommentsForGame12342();
             break;
     }
 })->name("PROJET4");
