@@ -7,6 +7,11 @@ final class Game extends \Illuminate\Database\Eloquent\Model{
     protected $primaryKey = 'id' ;
     public $timestamps = false ;
 
+
+    public function comments() {
+        return $this->hasMany('gamepedia\models\Comment','game_id');
+    }
+
     public function company(){
       return $this->belongsTo('gamepedia\models\Company', 'company_id');
     }

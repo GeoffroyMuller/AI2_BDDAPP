@@ -46,6 +46,10 @@ class VuePrincipal
         $urlProjet3Question12 = $app->urlFor("PROJET3",['id' => 12]);
         $urlProjet3Question13 = $app->urlFor("PROJET3",['id' => 13]);
         $urlProjet3Question14 = $app->urlFor("PROJET3",['id' => 14]);
+
+
+        $urlProjet4Question1 = $app->urlFor("PROJET4",['id' => 1]);
+
             $html = <<<END
                 <h3>Projet 1</h3>
                 <ul>
@@ -82,6 +86,10 @@ class VuePrincipal
                     <li><a href="$urlProjet3Question13">Jeux développé par Sony chargement lié</a></li>
                     <li><a href="$urlProjet3Question14">Logs jeux développé par Sony - chargement lié</a></li>
                 </ul>
+            <h3>Projet 4</h3>
+                <ul>
+                <li><a href="$urlProjet4Question1">Question 1</a></li>
+</ul>
 END;
 
         return $html;

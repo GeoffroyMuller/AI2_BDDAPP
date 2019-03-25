@@ -10,18 +10,6 @@ use Slim\Slim as Slim;
 class ControleurGame
 {
 
-    /*
-     AVANT INDEX :
-
-
-
-
-    // Ajout de l'index CREATE INDEX `index_game_names` ON `game` (`name`);
-    APRES INDEX :
-
-
-
-     */
   public function tempsExecutionJeuxWhere() {
           $res = "<h3> Temps d'execution pour lister différents jeux : </h3>";
           $tempsDepart = microtime(true);
@@ -59,7 +47,7 @@ class ControleurGame
         $marioGames = Game::where('name','LIKE','Mario%')->get();
         foreach($marioGames as $marioGame) {
             foreach($marioGame->personnages as $personnage) {
-                $res .= "Personnage du jeu commençant par Mario : $personnage->name <br>";
+                // $res .= "Personnage du jeu commençant par Mario : $personnage->name <br>";
             }
         }
 

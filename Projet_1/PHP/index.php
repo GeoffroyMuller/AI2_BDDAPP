@@ -50,7 +50,7 @@ $app->get('/projet1/question/:id', function ($id) {
             (new ControleurGame())->paginationJeux();
             break;
         default:
-            (new VuePrincipal("<h3>Accueil</h3>"))->render();
+            (new VuePrincipal("Aucune question ne correspond à ce numéro"))->render();
             break;
     }
 })->name("PROJET1");
@@ -66,7 +66,6 @@ $app->get('/projet2/question/:id', function ($id){
             break;
         case '3':
             (new ControleurCompany())->jeuxDeveloppesParSony();
-
             break;
         case '4':
             (new ControleurGame())->ratingBoardMario();
@@ -81,7 +80,7 @@ $app->get('/projet2/question/:id', function ($id){
             (new ControleurCompany())->jeuxCompagniesInc3Plus();
             break;
         default:
-            (new VuePrincipal("elem"))->render();
+            (new VuePrincipal("Aucune question ne correspond à ce numéro"))->render();
             break;
     }
 })->name("PROJET2");
@@ -95,7 +94,7 @@ $app->get('/projet3/question/:id', function ($id){
             (new ControleurGame())->tempsExecutionListerJeuxMario();
             break;
         case '3':
-            (new ControleurGame())->tempsExecutionPersosMario()();
+            (new ControleurGame())->tempsExecutionPersosMario();
             break;
         case '4':
             (new ControleurGame())->tempsExecutionListerMario3Plus();
@@ -131,10 +130,18 @@ $app->get('/projet3/question/:id', function ($id){
             (new ControleurLogs())->log5bis();
             break;
         default:
-            (new \gamepedia\vues\VuePrincipal("Aucune question correspond à ce numéro"))->render();
+            (new \gamepedia\vues\VuePrincipal("Aucune question ne correspond à ce numéro"))->render();
             break;
     }
 })->name("PROJET3");
+
+
+$app->get('/projet4/question/:id', function ($id){
+    switch($id) {
+        case '1':
+            break;
+    }
+})->name("PROJET4");
 
 $app->post("/projet1/question/5", function() {
     (new \gamepedia\controleurs\ControleurGame())->paginationJeux();
