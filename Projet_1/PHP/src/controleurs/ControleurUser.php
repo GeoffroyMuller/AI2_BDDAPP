@@ -6,7 +6,7 @@ use DateTime;
 use gamepedia\models\Comment;
 use gamepedia\models\User;
 use gamepedia\vues\VuePrincipal;
-
+use Faker\Factory as FakerFactory;
 class ControleurUser
 {
 
@@ -53,12 +53,51 @@ class ControleurUser
                 $comment->user_mail = 'user2@mail.com';
                 $comment->save();
             }
-            (new VuePrincipal("Insertion effectuée avec succès"))->render();
+            (new VuePrincipal("<h3>Insertions effectuées avec succès</h3>"))->render();
         } catch (\Exception $e) {
-            (new VuePrincipal("Erreur lors de l'insertion : $e"))->render();
+            (new VuePrincipal("<h3>Erreur lors de l'insertion : vous avez surement deja insere les utilisateurs dans la table.</h3> <br><br><h5>Detail de l'erreur :</h5> <br> $e"))->render();
         }
 
 
+    }
+
+    // TODO : modifier la methode pour qu'elle ajoute 250000 commentaires mais un nombre aleatoire de commentaire par utilisateur
+
+    // Inserer 25000 utilisateurs et 10 commentaires par utilisateur
+    // Cette methode est particulierement longue puisqu'elle fait 275000 insertions
+    // Penser a augmenter max_execution_time dans la configuration php (300s recommande)
+    // Idem pour les erreurs de memoire, augmenter memory_limit dans la configuration php (1024M recommande)
+    public function createALotOfUsersAndCommentsWithFaker() {
+        try {
+        $faker = FakerFactory::create();
+
+        for($i = 0 ; $i < 25000 ; $i++) {
+            // Creer un utilisateur random realiser et l'inserer.
+            $user = new User;
+            // Ici on n'utilise pas $faker->email qui causait des problemes de duplication.
+            $mail = $faker->firstName.'.'.$faker->lastName.$faker->numberBetween(0,99999).'@'.$faker->safeEmailDomain;
+            $user->mail = $mail;
+            $user->lastname = $faker->lastName;
+            $user->firstname =  $faker->firstName;
+            $user->address = $faker->address;
+            $user->phone = $faker->phoneNumber;
+            $user->born = $faker->dateTime;
+            $user->save();
+            for($j = 0 ; $j < 10 ; $j ++) {
+                $creationDate = new DateTime();
+                $comment = new Comment;
+                $comment->content = $faker->text(200);
+                $comment->written_date = $creationDate;
+                $comment->created_at = $creationDate;
+                $comment->game_id = $faker->numberBetween(1,47948);
+                $comment->user_mail = $mail;
+                $comment->save();
+            }
+        }
+            (new VuePrincipal("<h3>Insertions effectuées avec succès</h3>"))->render();
+        } catch (\Exception $e) {
+            (new VuePrincipal("<h3>Erreur lors de l'insertion : </h3> <br><br> $e"))->render();
+        }
     }
 
 }

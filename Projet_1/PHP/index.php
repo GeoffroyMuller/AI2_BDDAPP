@@ -142,6 +142,12 @@ $app->get('/projet4/question/:id', function ($id){
         case '1':
             (new ControleurUser())->createUsersAndCommentsForGame12342();
             break;
+        case '2':
+            (new ControleurUser())->createALotOfUsersAndCommentsWithFaker();
+            break;
+        default:
+            (new \gamepedia\vues\VuePrincipal("Aucune question ne correspond à ce numéro"))->render();
+            break;
     }
 })->name("PROJET4");
 
