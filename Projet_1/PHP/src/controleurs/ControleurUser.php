@@ -176,13 +176,27 @@ class ControleurUser
     }
 
     public function listUser5Comments(){
-        $res = "User avec plus de 5 comments: <br><br>";
+        $res = "<h3>Utilisateurs ayant postés plus de 5 commentaires : </h3> <br><br><table style=\"width:100%\">
+                         <tr>
+                         <th>Email :</th>
+                         <th>Nom :</th>
+                         <th>Prénom :</th>
+                         <th>Adresse :</th>
+                         <th>Téléphone :</th>
+                         </tr>";
         $users = User::all();
         foreach($users as $user) {
             if($user->comments()->count() > 5) {
-                $res .= "$user->firstname <br>";
+                $res .= "  <tr>
+                               <td>$user->mail</td>
+                               <td>$user->lastname</td>
+                               <td>$user->firstname</td>
+                                <td>$user->address</td>
+                                 <td>$user->phone</td>
+                               </tr>";
             }
         }
+        $res .= "</table></body></html>";
         (new VuePrincipal($res))->render();
     }
 
