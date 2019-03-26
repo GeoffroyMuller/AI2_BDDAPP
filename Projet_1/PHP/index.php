@@ -165,6 +165,10 @@ $app->get('/api/games/:id', function($id){
     (new ControleurAPI())->displayGameJson($id);
 })->name("API_GAME");
 
+$app->get('/api/games/', function($id){
+    (new ControleurAPI())->displayGames();
+})->name("API_GAMES");
+
 $app->post('/projet4/question/4', function() {
     (new ControleurUser())->listUserComments();
 })->name("Projet4_SEARCH_COMMENTS");
