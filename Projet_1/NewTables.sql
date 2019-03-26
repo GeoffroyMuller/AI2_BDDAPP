@@ -15,7 +15,6 @@ CREATE TABLE `comment` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(64) NOT NULL,
   `content` varchar(256) NOT NULL,
-  `written_date` datetime NOT NULL,
   `game_id` int(11) NOT NULL,
   `user_mail` varchar(128) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
