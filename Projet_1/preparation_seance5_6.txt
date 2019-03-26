@@ -1,0 +1,26 @@
+1. Lorsque la fonction json_encode() reçoit un tableau PHP, expliquez dans quels cas elle
+retourne une chaine correspondant
+    1. à un tableau json : '[ …. ]'
+        echo "Tableau non-associatif sous forme de tableau : ", json_encode($c), "\n";
+
+    2. à un objet json : '{ ….. }'
+        echo "Tableau non-associatif sous forme d'objet : ", json_encode($c, JSON_FORCE_OBJECT), "\n\n";
+
+2. en utilisant le micro-framework slim, comment accède-t-on aux données transmises dans la
+requête sans utiliser les tableau $_GET et $_POST :
+    1. pour les données dans l'url,
+        Creer un objet slim puis faire appel a la methode get ou post avec en parametre l'url suivi des parametre de l'url :
+        $app = new Slim/Slim;
+        $app->('/url/:param',function($param){   });
+
+    2. pour les données dans le corps de la requête
+        
+
+3. en utilisant slim, comment positionner :
+    1. le code de retour de la réponse (200, 404, 401 …),
+        $app->halt( $code, $message ) : stoppe l'exécution et retourne une réponse HTTP avec le
+        code et le message
+
+    2. un header dans la réponse
+        positionner des headers :
+        $app->response->headers->set('Content-Type', '…') ;
