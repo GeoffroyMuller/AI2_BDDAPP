@@ -67,7 +67,7 @@ class ControleurUser
 
     // Inserer 25000 utilisateurs et 10 commentaires par utilisateur
     // Cette methode est particulierement longue puisqu'elle fait 275000 insertions
-    // Penser a augmenter max_execution_time dans la configuration php (300s recommande)
+    // Penser a augmenter max_execution_time dans la configuration php (500s recommande)
     // Idem pour les erreurs de memoire, augmenter memory_limit dans la configuration php (1024M recommande)
     public function createALotOfUsersAndCommentsWithFaker() {
         try {
@@ -85,16 +85,19 @@ class ControleurUser
             $user->phone = $faker->phoneNumber;
             $user->born = $faker->dateTime;
             $user->save();
-            for($j = 0 ; $j < 10 ; $j ++) {
-                $creationDate = new DateTime();
-                $comment = new Comment;
-                $comment->content = $faker->text(200);
-                $comment->written_date = $creationDate;
-                $comment->created_at = $creationDate;
-                $comment->game_id = $faker->numberBetween(1,47948);
-                $comment->user_mail = $mail;
-                $comment->save();
-            }
+
+        }
+
+        for($j = 0 ; $j < 250000 ; $j++) {
+            $user = User::all()->random(1)->first();
+            $creationDate = new DateTime();
+            $comment = new Comment;
+            $comment->content = $faker->text(200);
+            $comment->written_date = $creationDate;
+            $comment->created_at = $creationDate;
+            $comment->game_id = $faker->numberBetween(1,47948);
+            $comment->user_mail = $user->mail;
+            $comment->save();
         }
             (new VuePrincipal("<h3>Insertions effectuées avec succès</h3>"))->render();
         } catch (\Exception $e) {
