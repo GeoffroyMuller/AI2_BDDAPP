@@ -7,6 +7,7 @@
 
 require_once 'vendor/autoload.php';
 
+use gamepedia\controleurs\ControleurAPI;
 use gamepedia\controleurs\ControleurUser;
 use Illuminate\Database\Capsule\Manager as Manager;
 use gamepedia\vues\VuePrincipal as VuePrincipal;
@@ -159,6 +160,10 @@ $app->get('/projet4/question/:id', function ($id){
             break;
     }
 })->name("PROJET4");
+
+$app->get('/api/games/:id', function($id){
+    (new ControleurAPI())->displayGameJson($id);
+})->name("API_GAME");
 
 $app->post('/projet4/question/4', function() {
     (new ControleurUser())->listUserComments();

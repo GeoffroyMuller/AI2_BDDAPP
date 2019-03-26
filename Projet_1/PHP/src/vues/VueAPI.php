@@ -9,6 +9,7 @@ class VueAPI
     {
         $this->elements = $content;
         $this->app = \Slim\Slim::getInstance();
+        header('Content-type: application/json');
     //    $this->urlServeur =  Slim::getInstance()->request()->getRootUri();
     }
 

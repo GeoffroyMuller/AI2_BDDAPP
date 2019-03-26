@@ -54,6 +54,8 @@ class VuePrincipal
         $urlProjet4Question4 = $app->urlFor("PROJET4",['id' => 4]);
         $urlProjet4Question5 = $app->urlFor("PROJET4",['id' => 5]);
 
+        $urlAPI_AccesJeu1 = $app->urlFor("API_GAME",['id' => 1]);
+
 
             $html = <<<END
                 <h3>Projet 1</h3>
@@ -98,7 +100,11 @@ class VuePrincipal
                 <li><a href="$urlProjet4Question3">Generer aleatoirement 250 000 commentaires</a></li>
                 <li><a href="$urlProjet4Question4">Rechercher les commentaires d'un l'utilisateur</a></li>
                 <li><a href="$urlProjet4Question5">Utilisateurs avec plus de 5 commentaires</a></li>
-</ul>
+                </ul>
+            <h3>API</h3>
+                <ul>
+                <li><a href="$urlAPI_AccesJeu1">Test API Jeu 1</a></li>
+                </ul>
 END;
 
         return $html;
