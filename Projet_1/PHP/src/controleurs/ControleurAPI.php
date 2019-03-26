@@ -30,43 +30,28 @@ class ControleurAPI
         $premiersJeux = array();
 
         $paramValue = \Slim\Slim::getInstance()->request()->get('page');
-        if(isset($paramValue) && is_numeric($paramValue)) {
-            try{
-                for($i = (($paramValue-1)*200) + 1 ; $i <= (200*$paramValue); $i++) {
-                    $jeu = Game::where('id','=',$i)->first();
-                    $var = json_decode(json_encode($jeu),true);
-                    $var['self']= ['href'=>'http://'.$app->request()->getHostWithPort().$app->request()->getRootUri()."/api/games/$i"];
-                    $premiersJeux[$i] = $var;
-                }
-                $pagePrec = $paramValue - 1;
-                $pageSuiv = $paramValue + 1;
-                $premiersJeux['links'] = array('prec'=>'http://'.$app->request()->getHostWithPort().$app->request()->getRootUri()."/api/games?page=$pagePrec",
-                    'suiv'=>'http://'.$app->request()->getHostWithPort().$app->request()->getRootUri()."/api/games?page=$pageSuiv");
-            }catch (ModelNotFoundException $e){
-                $app->response->setStatus(404);
-                $app->response->headers->set('Content-Type', 'application/json');
-                echo json_encode(['error' => 404, 'Information'=>'Jeu demande non trouve']);
-                return;
-            }
+        if(!isset($paramValue) || !is_numeric($paramValue)) {
 
+            $paramValue = 1;
 
-        } else {
-            for($i = 1 ; $i <= 200 ; $i++) {
-              try{
-                  $jeu = Game::where('id','=',$i)->first();
-                  $var = json_decode(json_encode($jeu),true);
-                  $var['self']= ['href'=>'http://'.$app->request()->getHostWithPort().$app->request()->getRootUri()."/api/games/$i"];
-                  $premiersJeux[$i] = $var;
-              }catch (ModelNotFoundException $e){
-                  $app->response->setStatus(404);
-                  $app->response->headers->set('Content-Type', 'application/json');
-                  echo json_encode(['error' => 404, 'Information'=>'Jeu demande non trouve']);
-                  return;
-              }
-
-            }
         }
-
+        try{
+            for($i = (($paramValue-1)*200) + 1 ; $i <= (200*$paramValue); $i++) {
+                $jeu = Game::where('id','=',$i)->first();
+                $var = json_decode(json_encode($jeu),true);
+                $var['self']= ['href'=>'http://'.$app->request()->getHostWithPort().$app->request()->getRootUri()."/api/games/$i"];
+                $premiersJeux[$i] = $var;
+            }
+            $pagePrec = $paramValue - 1;
+            $pageSuiv = $paramValue + 1;
+            $premiersJeux['links'] = array('prec'=>'http://'.$app->request()->getHostWithPort().$app->request()->getRootUri()."/api/games?page=$pagePrec",
+                'suiv'=>'http://'.$app->request()->getHostWithPort().$app->request()->getRootUri()."/api/games?page=$pageSuiv");
+        }catch (ModelNotFoundException $e){
+            $app->response->setStatus(404);
+            $app->response->headers->set('Content-Type', 'application/json');
+            echo json_encode(['error' => 404, 'Information'=>'Jeu demande non trouve']);
+            return;
+        }
         $app->response->setStatus(200);
         $app->response->headers->set('Content-Type', 'application/json');
 
