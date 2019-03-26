@@ -165,7 +165,7 @@ $app->get('/api/games/:id', function($id){
     (new ControleurAPI())->displayGameJson($id);
 })->name("API_GAME");
 
-$app->get('/api/games/', function($id){
+$app->get('/api/games/', function(){
     (new ControleurAPI())->displayGames();
 })->name("API_GAMES");
 

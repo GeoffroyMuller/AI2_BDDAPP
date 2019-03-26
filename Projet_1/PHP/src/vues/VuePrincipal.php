@@ -55,6 +55,7 @@ class VuePrincipal
         $urlProjet4Question5 = $app->urlFor("PROJET4",['id' => 5]);
 
         $urlAPI_AccesJeu1 = $app->urlFor("API_GAME",['id' => 1]);
+        $urlAPI_Jeux = $app->urlFor("API_GAMES");
 
 
             $html = <<<END
@@ -104,6 +105,7 @@ class VuePrincipal
             <h3>API</h3>
                 <ul>
                 <li><a href="$urlAPI_AccesJeu1">Test API Jeu 1</a></li>
+                <li><a href="$urlAPI_Jeux">Test API Jeux</a></li>
                 </ul>
 END;
 

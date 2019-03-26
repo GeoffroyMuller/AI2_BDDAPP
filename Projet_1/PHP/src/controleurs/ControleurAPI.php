@@ -1,9 +1,5 @@
 <?php
-
-
 namespace gamepedia\controleurs;
-
-
 use gamepedia\models\Game;
 use gamepedia\vues\VueAPI;
 
@@ -16,5 +12,16 @@ class ControleurAPI
         if($jeu != null) {
             (new VueAPI($jeu))->render();
         }
+    }
+
+    public function displayGames() {
+        $premiersJeux = array();
+        for($i = 1 ; $i <= 200 ; $i++) {
+            $test = Game::where('id','=',$i)->first();
+            $premiersJeux[$i] = $test;
+
+        }
+
+        (new VueAPI($premiersJeux))->render();
     }
 }
