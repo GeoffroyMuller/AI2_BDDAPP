@@ -27,8 +27,9 @@ $db::connection()->enableQueryLog();
 $app = new \Slim\Slim;
 
 $app->get('/', function () {
-    (new VuePrincipal("<h3>Accueil</h3>"))->render();
-});
+    (new VuePrincipal("<h3><ul class='colorName'><li>PALMIERI Adrien</li><li>MULLER Geoffroy</li><li>KIRCHER Nicolas</li><li>PLAID Justin</li></ul></h3>"))->render();
+})->name("Accueil");
+
 $app->get('/principale', function () {
     (new VuePrincipal("<h3>Accueil</h3>"))->render();
 });

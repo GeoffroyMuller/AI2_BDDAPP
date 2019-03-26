@@ -18,6 +18,7 @@ class VuePrincipal
     public function htmlquestion()
     {
         $app = Slim::getInstance();
+        $urlAccueil = $app->urlFor("Accueil");
         $urlProjet1Question1 = $app->urlFor("PROJET1",['id' => 1]);
         $urlProjet1Question2 = $app->urlFor("PROJET1",['id' => 2]);
         $urlProjet1Question3 =$app->urlFor("PROJET1",['id' => 3]);
@@ -59,7 +60,62 @@ class VuePrincipal
 
 
             $html = <<<END
-                <h3>Projet 1</h3>
+            <ul class="navBardrop">
+                <li class="dropdown"><a href="$urlAccueil">Accueil</a></li>
+                <li class="dropdown">
+                    <a href="javascipy:void(0)" class="dropbtn">Projet 1</a>
+                    <div class="dropdown-content">
+                        <a href="$urlProjet1Question1">Question 1</a>
+                        <a href="$urlProjet1Question2">Question 2</a>
+                        <a href="$urlProjet1Question3">Question 3</a>
+                        <a href="$urlProjet1Question4">Question 4</a>
+                        <a href="$urlProjet1Question5">Question 5</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="javascipy:void(0)" class="dropbtn">Projet 2</a>
+                    <div class="dropdown-content">
+                         <a href="$urlProjet2Question1">Question 1</a>
+                         <a href="$urlProjet2Question2">Question 2</a>
+                         <a href="$urlProjet2Question3">Question 3</a>
+                         <a href="$urlProjet2Question4">Question 4</a>
+                         <a href="$urlProjet2Question5">Question 5</a>
+                         <a href="$urlProjet2Question6">Question 6</a>
+                         <a href="$urlProjet2Question7">Question 7</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="javascipy:void(0)" class="dropbtn">Projet 3</a>
+                    <div class="dropdown-content">
+                        <a href="$urlProjet3Question1">Question 1</a>
+                        <a href="$urlProjet3Question2">Question 2</a>
+                        <a href="$urlProjet3Question3">Question 3</a>
+                        <a href="$urlProjet3Question4">Question 4</a>
+                        <a href="$urlProjet3Question5">Mesures temps index (Partie 1)</a>
+                        <a href="$urlProjet3Question6">Logs jeux Mario</a>
+                        <a href="$urlProjet3Question7">Logs nom des personnages du jeu 12342</a>
+                        <a href="$urlProjet3Question8">Logs nom des personnages apparus pour la 1ere fois dans un jeu Mario</a>
+                        <a href="$urlProjet3Question9">Logs nom des personnages de Mario</a>
+                        <a href="$urlProjet3Question10">Logs jeux développé par Sony</a>
+                        <a href="$urlProjet3Question12">Nom des personnages de Mario - chargement lié</a>
+                        <a href="$urlProjet3Question11">Logs nom des personnages de Mario - chargement lié</a>
+                        <a href="$urlProjet3Question13">Jeux développé par Sony chargement lié</a>
+                        <a href="$urlProjet3Question14">Logs jeux développé par Sony - chargement lié</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="javascipy:void(0)" class="dropbtn">Projet 4</a>
+                    <div class="dropdown-content">
+                        <a href="$urlProjet4Question1">Ajouter 2 utilisateurs et leurs 3 commentaires</a>
+                        <a href="$urlProjet4Question2">Generer aleatoirement 25000 utilisateurs</a>
+                        <a href="$urlProjet4Question3">Generer aleatoirement 250 000 commentaires</a>
+                        <a href="$urlProjet4Question4">Rechercher les commentaires d'un l'utilisateur</a>
+                        <a href="$urlProjet4Question5">Utilisateurs avec plus de 5 commentaires</a>
+                    </div>
+                </li>
+</ul>
+
+        <h3>Projet 1</h3>
                 <ul>
                   <li><a href="$urlProjet1Question1">Question 1</a></li>
                   <li><a href="$urlProjet1Question2">Question 2</a></li>
@@ -124,14 +180,17 @@ END;
 <link rel="stylesheet" type="text/css" href="$this->urlServeur/css/style.css">
 </head>
 <body>
-<a href="$this->urlServeur">Accueil</a>
- <div class="menu">
+<div class="menu">
  $menu
 </div>
 <div>
  $content
 </div>
-</body></html>
+</body>
+<br><br><br><br><br><br><br><br><br><br>
+<div class="footer">
+<p>PALMIERI Adrien &nbsp;&nbsp;&nbsp;MULLER Geoffroy &nbsp;&nbsp;&nbsp;KIRCHER Nicolas &nbsp;&nbsp;&nbsp;PLAID Justin</p>
+</div></html>
 END;
 
         echo $html;
