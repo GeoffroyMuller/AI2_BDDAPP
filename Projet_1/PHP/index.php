@@ -174,6 +174,13 @@ $app->get('/api/games/:id/characters', function($id) {
     (new ControleurAPI())->displayGameCharacters($id);
 })->name("API_CHARACTERS");
 
+$app->get('/api/games/:id/comments', function($id) {
+    (new ControleurAPI())->displayGameComments($id);
+})->name("API_COMMENTS");
+
+$app->post('/api/games/:id/comments', function($id) {
+    (new ControleurAPI())->addGameComment($id);
+})->name("API_ADD_COMMENT");
 $app->post('/projet4/question/4', function() {
     (new ControleurUser())->listUserComments();
 })->name("Projet4_SEARCH_COMMENTS");

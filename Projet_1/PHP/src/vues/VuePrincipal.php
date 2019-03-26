@@ -163,6 +163,11 @@ class VuePrincipal
                 <li><a href="$urlAPI_AccesJeu1">Test API Jeu 1</a></li>
                 <li><a href="$urlAPI_Jeux">Test API Jeux</a></li>
                 </ul>
+
+
+<form action='http://localhost:8888/AIBDDLocal/api/games/12342/comments' method='post'>
+<input title="" name="json_request" type=\"text\" />
+<input type='submit' value='Valider'> </form> ";
 END;
 
         return $html;
