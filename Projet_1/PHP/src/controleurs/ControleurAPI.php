@@ -25,6 +25,23 @@ class ControleurAPI
 
     }
 
+
+
+    public function displayGameCharacters($id_jeu) {
+        $app = \Slim\Slim::getInstance();
+        try{
+            $jeu = Game::where('id','=',$id_jeu)->firstOrFail();
+            $personnages = $jeu->personnages()->get();
+        }catch (ModelNotFoundException $e){
+            $app->response->setStatus(404);
+            $app->response->headers->set('Content-Type', 'application/json');
+            echo json_encode(['error' => 404, 'Information'=>'Jeu demande non trouve']);
+            return;
+        }
+        $app->response->setStatus(200);
+        $app->response->headers->set('Content-Type', 'application/json');
+        echo json_encode($personnages->toArray());
+    }
     public function displayGames() {
         $app = \Slim\Slim::getInstance();
         $premiersJeux = array();

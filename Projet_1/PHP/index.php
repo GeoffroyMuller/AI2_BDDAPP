@@ -170,6 +170,10 @@ $app->get('/api/games/', function(){
     (new ControleurAPI())->displayGames();
 })->name("API_GAMES");
 
+$app->get('/api/games/:id/characters', function($id) {
+    (new ControleurAPI())->displayGameCharacters($id);
+})->name("API_CHARACTERS");
+
 $app->post('/projet4/question/4', function() {
     (new ControleurUser())->listUserComments();
 })->name("Projet4_SEARCH_COMMENTS");
