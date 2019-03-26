@@ -104,30 +104,40 @@ class ControleurUser
 
 
    // public function
-
     public function getUser($user_mail) {
         $user = User::where('mail','=',$user_mail)->first();
         return $user;
 
     }
 
+
     public function listUserComments() {
         $urlPostSearchComments = Slim::getInstance()->urlFor("Projet4_SEARCH_COMMENTS");
-    /*    $formulaireQuestion5 = "<form action='$urlPostSearchComments' method='post'><select name='numeroPage'>";
-        for ($i = 1; $i < $nbPages; $i++) {
-            $formulaireQuestion5 .= " <option value='$i'>$i</option> ";
-        }
-        $formulaireQuestion5 .= " </select> <input type='submit' value='Valider'> </form> ";
-        $res .= $formulaireQuestion5." </body></html> ";
-        (new VuePrincipal($res))->render();
+        $res = "<h3> Lister les commentaires de l'utilisateur</h3>";
 
-        $mail_utilisateur = Slim::getInstance()->request->post('numeroPage');*/
+        $formulaire = "<form action='$urlPostSearchComments' method='post'>";
+        $formulaire .= "<input title=\"Mail de l'utilisateur\" id=\"mail_utilisateur\" name=\"mail_utilisateur\" type=\"text\" />";
+        $formulaire .= "<input type='submit' value='Valider'> </form> ";
+
+
+
+        $mail_utilisateur = Slim::getInstance()->request->post('mail_utilisateur');
         if (isset($mail_utilisateur)) {
-            $utilisateur = $this->getUser($mail_utilisateur);
+
+
+            $mail = filter_var($mail_utilisateur, FILTER_SANITIZE_EMAIL);
+            // TODO : NE PAS OUBLIER LE FILTER VAR
+
+            $utilisateur = $this->getUser($mail);
             if($utilisateur != null) {
                 // Lister les commentaires
+                $res .= "MAIL TROUVE";
+            } else {
+                $res .= "MAIL INEXISTANT";
             }
         }
+        $res .= $formulaire." </body></html> ";
+        (new VuePrincipal($res))->render();
     }
 
 }

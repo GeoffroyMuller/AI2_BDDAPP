@@ -154,7 +154,7 @@ $app->get('/projet4/question/:id', function ($id){
     }
 })->name("PROJET4");
 
-$app->post('projet4/question/3', function() {
+$app->post('/projet4/question/3', function() {
     (new ControleurUser())->listUserComments();
 })->name("Projet4_SEARCH_COMMENTS");
 

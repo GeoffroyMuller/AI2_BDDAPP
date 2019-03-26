@@ -93,7 +93,7 @@ class VuePrincipal
                 <ul>
                 <li><a href="$urlProjet4Question1">Ajouter 2 utilisateurs et leurs 3 commentaires</a></li>
                 <li><a href="$urlProjet4Question2">Generer aleatoirement 25000 utilisateurs et 250 000 commentaires</a></li>
-                <li><a href="$urlProjet4Question2">Rechercher les commentaires d'un l'utilisateur</a></li>
+                <li><a href="$urlProjet4Question3">Rechercher les commentaires d'un l'utilisateur</a></li>
 </ul>
 END;
 
