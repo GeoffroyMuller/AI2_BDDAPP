@@ -13,6 +13,7 @@ CREATE TABLE `user` (
 DROP TABLE IF EXISTS `comment`;
 CREATE TABLE `comment` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(64) NOT NULL,
   `content` varchar(256) NOT NULL,
   `written_date` datetime NOT NULL,
   `game_id` int(11) NOT NULL,
