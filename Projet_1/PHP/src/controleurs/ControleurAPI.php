@@ -30,7 +30,7 @@ class ControleurAPI
         $premiersJeux = array();
 
         $paramValue = \Slim\Slim::getInstance()->request()->get('page');
-        if(isset($paramValue)) {
+        if(isset($paramValue) && is_numeric($paramValue)) {
             for($i = (($paramValue-1)*200) + 1 ; $i <= (200*$paramValue); $i++) {
                 $test = Game::where('id','=',$i)->first();
                 $premiersJeux[$i] = $test;
