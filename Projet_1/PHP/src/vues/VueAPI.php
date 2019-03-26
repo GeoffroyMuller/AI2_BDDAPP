@@ -9,7 +9,6 @@ class VueAPI
     {
         $this->elements = $content;
         $this->app = \Slim\Slim::getInstance();
-        header('Content-type: application/json');
     //    $this->urlServeur =  Slim::getInstance()->request()->getRootUri();
     }
 
@@ -17,6 +16,6 @@ class VueAPI
     public function render()
     {
         header('Content-type: application/json');
-        echo json_encode($this->elements,JSON_FORCE_OBJECT);
+        exit(json_encode($this->elements,JSON_FORCE_OBJECT));
     }
 }
