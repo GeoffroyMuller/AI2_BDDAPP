@@ -148,6 +148,9 @@ $app->get('/projet4/question/:id', function ($id){
         case '3':
             (new ControleurUser())->listUserComments();
             break;
+        case '4':
+            (new ControleurUser())->listUser5Comments();
+            break;
         default:
             (new VuePrincipal("Aucune question ne correspond à ce numéro"))->render();
             break;

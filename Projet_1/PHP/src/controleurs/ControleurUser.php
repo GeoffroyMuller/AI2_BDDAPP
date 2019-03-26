@@ -162,4 +162,15 @@ class ControleurUser
         (new VuePrincipal($res))->render();
     }
 
+    public function listUser5Comments(){
+      $res = "User avec plus de 5 comments: <br><br>";
+      $users = User::all();
+      foreach($users as $user) {
+          if($user->comments()->count() > 5) {
+              $res .= "$user->firstname <br>";
+          }
+      }
+      (new VuePrincipal($res))->render();
+    }
+
 }
