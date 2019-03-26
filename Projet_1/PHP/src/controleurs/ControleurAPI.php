@@ -28,18 +28,38 @@ class ControleurAPI
     public function displayGames() {
         $app = \Slim\Slim::getInstance();
         $premiersJeux = array();
-        for($i = 1 ; $i <= 200 ; $i++) {
-          try{
-            $test = Game::where('id','=',$i)->first();
-          }catch (ModelNotFoundException $e){
-              $app->response->setStatus(404);
-              $app->response->headers->set('Content-Type', 'application/json');
-              echo json_encode(['error' => 404, 'message'=>'game not found']);
-              return;
-          }
-          $premiersJeux[$i] = $test;
-        }
 
+        $paramValue = \Slim\Slim::getInstance()->request()->get('page');
+        if(isset($paramValue)) {
+            for($i = (($paramValue-1)*200) + 1 ; $i <= (200*$paramValue); $i++) {
+                $test = Game::where('id','=',$i)->first();
+                $premiersJeux[$i] = $test;
+            }
+
+          for($i = (($paramValue-1)*200) + 1 ; $i <= (200*$paramValue); $i++) {
+            try{
+              $test = Game::where('id','=',$i)->first();
+            }catch (ModelNotFoundException $e){
+                $app->response->setStatus(404);
+                $app->response->headers->set('Content-Type', 'application/json');
+                echo json_encode(['error' => 404, 'message'=>'game not found']);
+                return;
+            }
+            $premiersJeux[$i] = $test;
+          }
+        } else {
+            for($i = 1 ; $i <= 200 ; $i++) {
+              try{
+                $test = Game::where('id','=',$i)->first();
+              }catch (ModelNotFoundException $e){
+                  $app->response->setStatus(404);
+                  $app->response->headers->set('Content-Type', 'application/json');
+                  echo json_encode(['error' => 404, 'message'=>'game not found']);
+                  return;
+              }
+                $premiersJeux[$i] = $test;
+            }
+        }
 
         $app->response->setStatus(200);
         $app->response->headers->set('Content-Type', 'application/json');
