@@ -36,16 +36,20 @@ class ControleurAPI
 
         }
         try{
+            $url = $app->request()->getHostWithPort().$app->request()->getRootUri();
+            if($paramValue <= 0)    $paramValue = 1;
             for($i = (($paramValue-1)*200) + 1 ; $i <= (200*$paramValue); $i++) {
                 $jeu = Game::where('id','=',$i)->first();
                 $var = json_decode(json_encode($jeu),true);
-                $var['self']= ['href'=>'http://'.$app->request()->getHostWithPort().$app->request()->getRootUri()."/api/games/$i"];
+                $var['self'] = array('href'=>"http://$url/api/games/$i",
+                                    'comments'=>"http://$url/api/games/$i/comments",
+                                    'characters'=>"http://$url/api/games/$i/characters");
                 $premiersJeux[$i] = $var;
             }
             $pagePrec = $paramValue - 1;
             $pageSuiv = $paramValue + 1;
-            $premiersJeux['links'] = array('prec'=>'http://'.$app->request()->getHostWithPort().$app->request()->getRootUri()."/api/games?page=$pagePrec",
-                'suiv'=>'http://'.$app->request()->getHostWithPort().$app->request()->getRootUri()."/api/games?page=$pageSuiv");
+            $premiersJeux['links'] = array('prec'=>"http://$url/api/games?page=$pagePrec",
+                                           'suiv'=>"http://$url/api/games?page=$pageSuiv");
         }catch (ModelNotFoundException $e){
             $app->response->setStatus(404);
             $app->response->headers->set('Content-Type', 'application/json');
