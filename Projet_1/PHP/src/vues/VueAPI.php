@@ -15,7 +15,8 @@ class VueAPI
 
     public function render()
     {
-        header('Content-type: application/json');
-        exit(json_encode($this->elements,JSON_FORCE_OBJECT));
+
+        $this->app->response->headers->set('Content-type','application/json');
+        echo json_encode($this->elements,JSON_FORCE_OBJECT);
     }
 }
