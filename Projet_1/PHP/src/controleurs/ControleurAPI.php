@@ -31,22 +31,13 @@ class ControleurAPI
 
         $paramValue = \Slim\Slim::getInstance()->request()->get('page');
         if(isset($paramValue) && is_numeric($paramValue)) {
-            for($i = (($paramValue-1)*200) + 1 ; $i <= (200*$paramValue); $i++) {
-                $test = Game::where('id','=',$i)->first();
-                $jsonFinal = json_encode($test);
-
-
-                $jsonArray = json_decode($jsonFinal,true);
-                $new_data = "href:'url'";
-                $jsonArray['self'] = $new_data;
-                $jsonFinal2 = json_encode($jsonArray);
-                $premiersJeux[$i] = $jsonFinal2;
-
-            }
-
-          for($i = (($paramValue-1)*200) + 1 ; $i <= (200*$paramValue); $i++) {
             try{
-              $test = Game::where('id','=',$i)->first();
+                for($i = (($paramValue-1)*200) + 1 ; $i <= (200*$paramValue); $i++) {
+                    $test = Game::where('id','=',$i)->first();
+                    $var = json_decode(json_encode($test),true);
+                    $var['self']= ['href'=>'http://'.$app->request()->getHostWithPort().$app->request()->getRootUri()."/api/games/$i"];
+                    $premiersJeux[$i] = $var;
+                }
             }catch (ModelNotFoundException $e){
                 $app->response->setStatus(404);
                 $app->response->headers->set('Content-Type', 'application/json');
@@ -54,7 +45,7 @@ class ControleurAPI
                 return;
             }
             $premiersJeux[$i] = $test;
-          }
+
         } else {
             for($i = 1 ; $i <= 200 ; $i++) {
               try{
@@ -72,8 +63,8 @@ class ControleurAPI
         $app->response->setStatus(200);
         $app->response->headers->set('Content-Type', 'application/json');
 
-       // $json = json_encode($premiersJeux);
+        $json = json_encode($premiersJeux);
+        echo $json;
 
-        echo json_encode($premiersJeux);
     }
 }
