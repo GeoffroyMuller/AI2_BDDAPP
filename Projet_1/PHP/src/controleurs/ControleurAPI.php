@@ -33,7 +33,15 @@ class ControleurAPI
         if(isset($paramValue) && is_numeric($paramValue)) {
             for($i = (($paramValue-1)*200) + 1 ; $i <= (200*$paramValue); $i++) {
                 $test = Game::where('id','=',$i)->first();
-                $premiersJeux[$i] = $test;
+                $jsonFinal = json_encode($test);
+
+
+                $jsonArray = json_decode($jsonFinal,true);
+                $new_data = "href:'url'";
+                $jsonArray['self'] = $new_data;
+                $jsonFinal2 = json_encode($jsonArray);
+                $premiersJeux[$i] = $jsonFinal2;
+
             }
 
           for($i = (($paramValue-1)*200) + 1 ; $i <= (200*$paramValue); $i++) {
@@ -63,6 +71,9 @@ class ControleurAPI
 
         $app->response->setStatus(200);
         $app->response->headers->set('Content-Type', 'application/json');
+
+       // $json = json_encode($premiersJeux);
+
         echo json_encode($premiersJeux);
     }
 }
