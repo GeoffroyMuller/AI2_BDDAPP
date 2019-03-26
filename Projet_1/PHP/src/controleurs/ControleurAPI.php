@@ -64,6 +64,5 @@ class ControleurAPI
         $app->response->setStatus(200);
         $app->response->headers->set('Content-Type', 'application/json');
         echo json_encode($premiersJeux);
-
     }
 }
