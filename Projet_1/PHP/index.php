@@ -143,12 +143,15 @@ $app->get('/projet4/question/:id', function ($id){
             (new ControleurUser())->createUsersAndCommentsForGame12342();
             break;
         case '2':
-            (new ControleurUser())->createALotOfUsersAndCommentsWithFaker();
+            (new ControleurUser())->createALotOfUsersWithFaker();
             break;
         case '3':
-            (new ControleurUser())->listUserComments();
+            (new ControleurUser())->createALotOfCommentsWithFaker();
             break;
         case '4':
+            (new ControleurUser())->listUserComments();
+            break;
+        case '5':
             (new ControleurUser())->listUser5Comments();
             break;
         default:
@@ -157,7 +160,7 @@ $app->get('/projet4/question/:id', function ($id){
     }
 })->name("PROJET4");
 
-$app->post('/projet4/question/3', function() {
+$app->post('/projet4/question/4', function() {
     (new ControleurUser())->listUserComments();
 })->name("Projet4_SEARCH_COMMENTS");
 

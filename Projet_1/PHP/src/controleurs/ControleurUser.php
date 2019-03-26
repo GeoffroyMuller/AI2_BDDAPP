@@ -63,13 +63,12 @@ class ControleurUser
 
     }
 
-    // TODO : modifier la methode pour qu'elle ajoute 250000 commentaires mais un nombre aleatoire de commentaire par utilisateur
 
-    // Inserer 25000 utilisateurs et 10 commentaires par utilisateur
-    // Cette methode est particulierement longue puisqu'elle fait 275000 insertions
+    // Inserer 25000 utilisateurs
+    // Cette methode est particulierement longue puisqu'elle fait 25000 insertions
     // Penser a augmenter max_execution_time dans la configuration php (500s recommande)
     // Idem pour les erreurs de memoire, augmenter memory_limit dans la configuration php (1024M recommande)
-    public function createALotOfUsersAndCommentsWithFaker() {
+    public function createALotOfUsersWithFaker() {
         try {
         $faker = FakerFactory::create();
 
@@ -87,18 +86,6 @@ class ControleurUser
             $user->save();
 
         }
-
-        for($j = 0 ; $j < 250000 ; $j++) {
-            $user = User::all()->random(1)->first();
-            $creationDate = new DateTime();
-            $comment = new Comment;
-            $comment->content = $faker->text(200);
-            $comment->written_date = $creationDate;
-            $comment->created_at = $creationDate;
-            $comment->game_id = $faker->numberBetween(1,47948);
-            $comment->user_mail = $user->mail;
-            $comment->save();
-        }
             (new VuePrincipal("<h3>Insertions effectuées avec succès</h3>"))->render();
         } catch (\Exception $e) {
             (new VuePrincipal("<h3>Erreur lors de l'insertion : </h3> <br><br> $e"))->render();
@@ -106,7 +93,33 @@ class ControleurUser
     }
 
 
-   // public function
+    // Inserer 250000 commentaires
+    // Cette methode est particulierement longue puisqu'elle fait 25000 insertions
+    // Penser a augmenter max_execution_time dans la configuration php (500s recommande)
+    // Idem pour les erreurs de memoire, augmenter memory_limit dans la configuration php (1024M recommande)
+    public function createALotOfCommentsWithFaker() {
+        try {
+            $faker = FakerFactory::create();
+
+           for($i = 0 ; $i <10 ; $i ++)   {
+               $users = User::all()->random(25000);
+               foreach($users as $user) {
+                   $creationDate = new DateTime();
+                   $comment = new Comment;
+                   $comment->content = $faker->text(200);
+                   $comment->written_date = $creationDate;
+                   $comment->created_at = $creationDate;
+                   $comment->game_id = $faker->numberBetween(1,47948);
+                   $comment->user_mail = $user->mail;
+                   $comment->save();
+               }
+           }
+            (new VuePrincipal("<h3>Insertions effectuées avec succès</h3>"))->render();
+        } catch (\Exception $e) {
+            (new VuePrincipal("<h3>Erreur lors de l'insertion : </h3> <br><br> $e"))->render();
+        }
+
+    }
     public function getUser($user_mail) {
         $user = User::where('mail','=',$user_mail)->first();
         return $user;
@@ -163,14 +176,15 @@ class ControleurUser
     }
 
     public function listUser5Comments(){
-      $res = "User avec plus de 5 comments: <br><br>";
-      $users = User::all();
-      foreach($users as $user) {
-          if($user->comments()->count() > 5) {
-              $res .= "$user->firstname <br>";
-          }
-      }
-      (new VuePrincipal($res))->render();
+        $res = "User avec plus de 5 comments: <br><br>";
+        $users = User::all();
+        foreach($users as $user) {
+            if($user->comments()->count() > 5) {
+                $res .= "$user->firstname <br>";
+            }
+        }
+        (new VuePrincipal($res))->render();
     }
+
 
 }
