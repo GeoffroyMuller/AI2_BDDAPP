@@ -33,30 +33,33 @@ class ControleurAPI
         if(isset($paramValue) && is_numeric($paramValue)) {
             try{
                 for($i = (($paramValue-1)*200) + 1 ; $i <= (200*$paramValue); $i++) {
-                    $test = Game::where('id','=',$i)->first();
-                    $var = json_decode(json_encode($test),true);
+                    $jeu = Game::where('id','=',$i)->first();
+                    $var = json_decode(json_encode($jeu),true);
                     $var['self']= ['href'=>'http://'.$app->request()->getHostWithPort().$app->request()->getRootUri()."/api/games/$i"];
                     $premiersJeux[$i] = $var;
                 }
             }catch (ModelNotFoundException $e){
                 $app->response->setStatus(404);
                 $app->response->headers->set('Content-Type', 'application/json');
-                echo json_encode(['error' => 404, 'message'=>'game not found']);
+                echo json_encode(['error' => 404, 'Information'=>'Jeu demande non trouve']);
                 return;
             }
-            $premiersJeux[$i] = $test;
+       
 
         } else {
             for($i = 1 ; $i <= 200 ; $i++) {
               try{
-                $test = Game::where('id','=',$i)->first();
+                  $jeu = Game::where('id','=',$i)->first();
+                  $var = json_decode(json_encode($jeu),true);
+                  $var['self']= ['href'=>'http://'.$app->request()->getHostWithPort().$app->request()->getRootUri()."/api/games/$i"];
+                  $premiersJeux[$i] = $var;
               }catch (ModelNotFoundException $e){
                   $app->response->setStatus(404);
                   $app->response->headers->set('Content-Type', 'application/json');
-                  echo json_encode(['error' => 404, 'message'=>'game not found']);
+                  echo json_encode(['error' => 404, 'Information'=>'Jeu demande non trouve']);
                   return;
               }
-                $premiersJeux[$i] = $test;
+
             }
         }
 
