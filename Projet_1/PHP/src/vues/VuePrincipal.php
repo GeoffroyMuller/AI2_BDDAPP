@@ -161,9 +161,12 @@ class VuePrincipal
                 </ul>
             <h3>API</h3>
                 <ul>
-                <li><a href="$urlAPI_AccesJeu1">Test API Jeu 1</a></li>
-                <li><a href="$urlAPI_Jeux">Test API Jeux</a></li>
-                <li><a href="$urlAPI_testCommentaire">Tester l'insertion de commentaire JSON</a></li>
+                <li><a href="$urlAPI_AccesJeu1">Test API : afficher un jeu (jeu n°1)</a></li>
+                <li><a href="$urlAPI_Jeux">Test API : afficher tous les jeux (page n°1)</a></li>
+                <li><a href="$urlAPI_Jeux?page=12">Test API : afficher tous les jeux (page n°12)</a></li>
+                <li><a href="$urlAPI_AccesJeu1/characters">Test API : afficher les personnages d'un jeu (jeu n°1)</a></li>
+                <li><a href="$urlAPI_AccesJeu1/comments">Test API : afficher les commentaires d'un jeu (jeu n°1)</a></li>
+                <li><a href="$urlAPI_testCommentaire">Tester l'insertion de commentaire JSON (jeu n°12342)</a></li>
                 </ul>
 
 END;
