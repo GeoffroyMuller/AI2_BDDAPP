@@ -23,7 +23,6 @@ class ControleurAPI
             for($i = (($paramValue-1)*200) + 1 ; $i <= (200*$paramValue); $i++) {
                 $test = Game::where('id','=',$i)->first();
                 $premiersJeux[$i] = $test;
-
             }
         } else {
             for($i = 1 ; $i <= 200 ; $i++) {
