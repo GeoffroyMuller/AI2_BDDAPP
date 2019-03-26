@@ -38,13 +38,17 @@ class ControleurAPI
                     $var['self']= ['href'=>'http://'.$app->request()->getHostWithPort().$app->request()->getRootUri()."/api/games/$i"];
                     $premiersJeux[$i] = $var;
                 }
+                $pagePrec = $paramValue - 1;
+                $pageSuiv = $paramValue + 1;
+                $premiersJeux['links'] = array('prec'=>'http://'.$app->request()->getHostWithPort().$app->request()->getRootUri()."/api/games?page=$pagePrec",
+                    'suiv'=>'http://'.$app->request()->getHostWithPort().$app->request()->getRootUri()."/api/games?page=$pageSuiv");
             }catch (ModelNotFoundException $e){
                 $app->response->setStatus(404);
                 $app->response->headers->set('Content-Type', 'application/json');
                 echo json_encode(['error' => 404, 'Information'=>'Jeu demande non trouve']);
                 return;
             }
-       
+
 
         } else {
             for($i = 1 ; $i <= 200 ; $i++) {
