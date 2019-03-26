@@ -133,7 +133,7 @@ class ControleurUser
                 // Lister les commentaires
                 $res .= "<h5> Commentaires de l'utilisateur : </h5>";
                // $res .= " $utilisateur->mail <br> $utilisateur->address <br> $utilisateur";
-                $comments = $utilisateur->comments;
+                $comments = $utilisateur->comments()->orderBy('created_at', 'DESC')->get();
 
                 $res .= "<table style=\"width:100%\">
                          <tr>
@@ -145,7 +145,7 @@ class ControleurUser
                 foreach($comments as $comment) {
                     $res .= "  <tr>
                                <td>$comment->user_mail</td>
-                               <td>$comment->written_date</td>
+                               <td>$comment->created_at</td>
                                <td>$comment->content</td>
                                </tr>";
                 }
