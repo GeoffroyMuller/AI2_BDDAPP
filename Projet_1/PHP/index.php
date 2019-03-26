@@ -27,11 +27,23 @@ $db::connection()->enableQueryLog();
 $app = new \Slim\Slim;
 
 $app->get('/', function () {
-    (new VuePrincipal("<h3><ul class='colorName'><li>PALMIERI Adrien</li><li>MULLER Geoffroy</li><li>KIRCHER Nicolas</li><li>PLAID Justin</li></ul></h3>"))->render();
+    (new VuePrincipal("<h3>Bienvenue sur notre projet !</h3> <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sed tortor pulvinar, consectetur nisl sed, fermentum ipsum. Curabitur ac felis dui. Nunc eget ipsum convallis, egestas elit at, mattis purus. Aliquam ultrices, lorem at eleifend egestas, lorem mauris posuere arcu, sed vehicula velit velit sed odio. Duis sollicitudin non ante a porta. Aenean sodales dapibus lorem, sit amet dapibus elit vestibulum in. Nam non neque rutrum, convallis justo eu, mollis turpis. Aliquam sollicitudin arcu ante, ullamcorper imperdiet mi semper eget. Nam vestibulum blandit porta. Phasellus suscipit pellentesque neque, eu venenatis purus scelerisque ac. Integer dui diam, ultricies et lectus non, euismod imperdiet turpis. Morbi id pretium felis. Morbi lobortis sem ac nunc sollicitudin fringilla. Suspendisse potenti. Nullam dignissim porttitor imperdiet. Sed mauris leo, auctor at sollicitudin sed, gravida vel libero.
+
+Mauris in gravida mi. Etiam vulputate dolor nec nisl bibendum feugiat commodo sit amet dolor. Vivamus sodales et felis quis bibendum. Nunc blandit et dolor ut accumsan. Morbi volutpat sed tellus eu interdum. Proin ac dignissim orci. Curabitur non dui at lacus tincidunt lacinia. Fusce rutrum nulla eu pharetra blandit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+
+Quisque quis nisi sed ex sagittis pulvinar. Sed imperdiet bibendum pulvinar. Duis non consequat ante, sit amet molestie felis. Morbi imperdiet neque sapien, molestie finibus enim rutrum a. Suspendisse potenti. Donec sodales ornare justo, et mattis neque posuere ac. Quisque felis est, gravida non malesuada nec, condimentum eget metus. Mauris volutpat, urna id laoreet auctor, diam elit volutpat erat, at tempor erat mauris sit amet ligula. Maecenas commodo dui sed finibus suscipit. Donec sit amet lectus nec mi pulvinar consequat sit amet et odio. Aliquam erat volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Fusce interdum diam id felis faucibus, at faucibus urna commodo.
+
+</p>"))->render();
 })->name("Accueil");
 
 $app->get('/principale', function () {
-    (new VuePrincipal("<h3>Accueil</h3>"))->render();
+    (new VuePrincipal("<h3>Bienvenue sur notre projet !</h3> <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sed tortor pulvinar, consectetur nisl sed, fermentum ipsum. Curabitur ac felis dui. Nunc eget ipsum convallis, egestas elit at, mattis purus. Aliquam ultrices, lorem at eleifend egestas, lorem mauris posuere arcu, sed vehicula velit velit sed odio. Duis sollicitudin non ante a porta. Aenean sodales dapibus lorem, sit amet dapibus elit vestibulum in. Nam non neque rutrum, convallis justo eu, mollis turpis. Aliquam sollicitudin arcu ante, ullamcorper imperdiet mi semper eget. Nam vestibulum blandit porta. Phasellus suscipit pellentesque neque, eu venenatis purus scelerisque ac. Integer dui diam, ultricies et lectus non, euismod imperdiet turpis. Morbi id pretium felis. Morbi lobortis sem ac nunc sollicitudin fringilla. Suspendisse potenti. Nullam dignissim porttitor imperdiet. Sed mauris leo, auctor at sollicitudin sed, gravida vel libero.
+
+Mauris in gravida mi. Etiam vulputate dolor nec nisl bibendum feugiat commodo sit amet dolor. Vivamus sodales et felis quis bibendum. Nunc blandit et dolor ut accumsan. Morbi volutpat sed tellus eu interdum. Proin ac dignissim orci. Curabitur non dui at lacus tincidunt lacinia. Fusce rutrum nulla eu pharetra blandit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+
+Quisque quis nisi sed ex sagittis pulvinar. Sed imperdiet bibendum pulvinar. Duis non consequat ante, sit amet molestie felis. Morbi imperdiet neque sapien, molestie finibus enim rutrum a. Suspendisse potenti. Donec sodales ornare justo, et mattis neque posuere ac. Quisque felis est, gravida non malesuada nec, condimentum eget metus. Mauris volutpat, urna id laoreet auctor, diam elit volutpat erat, at tempor erat mauris sit amet ligula. Maecenas commodo dui sed finibus suscipit. Donec sit amet lectus nec mi pulvinar consequat sit amet et odio. Aliquam erat volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Fusce interdum diam id felis faucibus, at faucibus urna commodo.
+
+</p>"))->render();
 });
 
 $app->get('/projet1/question/:id', function ($id) {

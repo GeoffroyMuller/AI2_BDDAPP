@@ -61,11 +61,20 @@ class VuePrincipal
 
 
             $html = <<<END
-            <ul class="navBardrop">
-                <li class="dropdown"><a href="$urlAccueil">Accueil</a></li>
-                <li class="dropdown">
-                    <a href="javascipy:void(0)" class="dropbtn">Projet 1</a>
-                    <div class="dropdown-content">
+            <ul id="navigation_menu">
+            
+            
+                <li class="menu_item">
+                
+                <div class="menu_button"><a id="home_link" href="$urlAccueil">Accueil</a></div>
+                
+                
+                </li>
+                <li class="menu_item">
+                
+                    <div class="menu_button"><a href="">Seance 1</a></div>
+                 
+                    <div class="menu_content">
                         <a href="$urlProjet1Question1">Question 1</a>
                         <a href="$urlProjet1Question2">Question 2</a>
                         <a href="$urlProjet1Question3">Question 3</a>
@@ -73,9 +82,11 @@ class VuePrincipal
                         <a href="$urlProjet1Question5">Question 5</a>
                     </div>
                 </li>
-                <li class="dropdown">
-                    <a href="javascipy:void(0)" class="dropbtn">Projet 2</a>
-                    <div class="dropdown-content">
+                <li class="menu_item">
+                 
+                    <div class="menu_button"><a href="">Seance 2</a></div>
+                 
+                    <div class="menu_content">
                          <a href="$urlProjet2Question1">Question 1</a>
                          <a href="$urlProjet2Question2">Question 2</a>
                          <a href="$urlProjet2Question3">Question 3</a>
@@ -85,9 +96,11 @@ class VuePrincipal
                          <a href="$urlProjet2Question7">Question 7</a>
                     </div>
                 </li>
-                <li class="dropdown">
-                    <a href="javascipy:void(0)" class="dropbtn">Projet 3</a>
-                    <div class="dropdown-content">
+                <li class="menu_item">
+                  
+                    <div class="menu_button"><a href="">Seance 3</a></div>
+                 
+                    <div class="menu_content">
                         <a href="$urlProjet3Question1">Question 1</a>
                         <a href="$urlProjet3Question2">Question 2</a>
                         <a href="$urlProjet3Question3">Question 3</a>
@@ -104,70 +117,32 @@ class VuePrincipal
                         <a href="$urlProjet3Question14">Logs jeux développé par Sony - chargement lié</a>
                     </div>
                 </li>
-                <li class="dropdown">
-                    <a href="javascipy:void(0)" class="dropbtn">Projet 4</a>
-                    <div class="dropdown-content">
+                <li class="menu_item">
+                    
+                    <div class="menu_button"><a href="">Seance 4</a></div>
+                 
+                    <div class="menu_content">
                         <a href="$urlProjet4Question1">Ajouter 2 utilisateurs et leurs 3 commentaires</a>
                         <a href="$urlProjet4Question2">Generer aleatoirement 25000 utilisateurs</a>
                         <a href="$urlProjet4Question3">Generer aleatoirement 250 000 commentaires</a>
-                        <a href="$urlProjet4Question4">Rechercher les commentaires d'un l'utilisateur</a>
+                        <a href="$urlProjet4Question4">Rechercher les commentaires d'un utilisateur</a>
                         <a href="$urlProjet4Question5">Utilisateurs avec plus de 5 commentaires</a>
                     </div>
                 </li>
+                <li class="menu_item">
+                
+                    <div class="menu_button"><a href="">Seances 5 et 6 (API)</a></div>
+                 
+                <div class="menu_content">
+                <a href="$urlAPI_AccesJeu1">Test API : afficher un jeu (jeu n°1)</a>
+                <a href="$urlAPI_Jeux">Test API : afficher tous les jeux (page n°1)</a>
+                <a href="$urlAPI_Jeux?page=12">Test API : afficher tous les jeux (page n°12)</a>
+                <a href="$urlAPI_AccesJeu1/characters">Test API : afficher les personnages d'un jeu (jeu n°1)</a>
+                <a href="$urlAPI_AccesJeu1/comments">Test API : afficher les commentaires d'un jeu (jeu n°1)</a>
+                <a href="$urlAPI_testCommentaire">Tester l'insertion de commentaire JSON (jeu n°12342)</a>
+                </li>
 </ul>
 
-        <h3>Projet 1</h3>
-                <ul>
-                  <li><a href="$urlProjet1Question1">Question 1</a></li>
-                  <li><a href="$urlProjet1Question2">Question 2</a></li>
-                  <li><a href="$urlProjet1Question3">Question 3</a></li>
-                  <li><a href="$urlProjet1Question4">Question 4</a></li>
-                  <li><a href="$urlProjet1Question5">Question 5</a></li>
-                </ul>
-                <h3>Projet 2</h3>
-                <ul>
-                    <li><a href="$urlProjet2Question1">Question 1</a></li>
-                    <li><a href="$urlProjet2Question2">Question 2</a></li>
-                    <li><a href="$urlProjet2Question3">Question 3</a></li>
-                    <li><a href="$urlProjet2Question4">Question 4</a></li>
-                    <li><a href="$urlProjet2Question5">Question 5</a></li>
-                    <li><a href="$urlProjet2Question6">Question 6</a></li>
-                    <li><a href="$urlProjet2Question7">Question 7</a></li>
-                </ul>
-            <h3>Projet 3</h3>
-                <ul>
-                    <li><a href="$urlProjet3Question1">Question 1</a></li>
-                    <li><a href="$urlProjet3Question2">Question 2</a></li>
-                    <li><a href="$urlProjet3Question3">Question 3</a></li>
-                    <li><a href="$urlProjet3Question4">Question 4</a></li>
-                    <li><a href="$urlProjet3Question5">Mesures temps index (Partie 1)</a></li>
-                    <li><a href="$urlProjet3Question6">Logs jeux Mario</a></li>
-                    <li><a href="$urlProjet3Question7">Logs nom des personnages du jeu 12342</a></li>
-                    <li><a href="$urlProjet3Question8">Logs nom des personnages apparus pour la 1ere fois dans un jeu Mario</a></li>
-                    <li><a href="$urlProjet3Question9">Logs nom des personnages de Mario</a></li>
-                    <li><a href="$urlProjet3Question10">Logs jeux développé par Sony</a></li>
-                    <li><a href="$urlProjet3Question12">Nom des personnages de Mario - chargement lié</a></li>
-                    <li><a href="$urlProjet3Question11">Logs nom des personnages de Mario - chargement lié</a></li>
-                    <li><a href="$urlProjet3Question13">Jeux développé par Sony chargement lié</a></li>
-                    <li><a href="$urlProjet3Question14">Logs jeux développé par Sony - chargement lié</a></li>
-                </ul>
-            <h3>Projet 4</h3>
-                <ul>
-                <li><a href="$urlProjet4Question1">Ajouter 2 utilisateurs et leurs 3 commentaires</a></li>
-                <li><a href="$urlProjet4Question2">Generer aleatoirement 25000 utilisateurs</a></li>
-                <li><a href="$urlProjet4Question3">Generer aleatoirement 250 000 commentaires</a></li>
-                <li><a href="$urlProjet4Question4">Rechercher les commentaires d'un l'utilisateur</a></li>
-                <li><a href="$urlProjet4Question5">Utilisateurs avec plus de 5 commentaires</a></li>
-                </ul>
-            <h3>API</h3>
-                <ul>
-                <li><a href="$urlAPI_AccesJeu1">Test API : afficher un jeu (jeu n°1)</a></li>
-                <li><a href="$urlAPI_Jeux">Test API : afficher tous les jeux (page n°1)</a></li>
-                <li><a href="$urlAPI_Jeux?page=12">Test API : afficher tous les jeux (page n°12)</a></li>
-                <li><a href="$urlAPI_AccesJeu1/characters">Test API : afficher les personnages d'un jeu (jeu n°1)</a></li>
-                <li><a href="$urlAPI_AccesJeu1/comments">Test API : afficher les commentaires d'un jeu (jeu n°1)</a></li>
-                <li><a href="$urlAPI_testCommentaire">Tester l'insertion de commentaire JSON (jeu n°12342)</a></li>
-                </ul>
 
 END;
 
@@ -193,9 +168,10 @@ END;
  $content
 </div>
 </body>
-<br><br><br><br><br><br><br><br><br><br>
-<div class="footer">
-<p>PALMIERI Adrien &nbsp;&nbsp;&nbsp;MULLER Geoffroy &nbsp;&nbsp;&nbsp;KIRCHER Nicolas &nbsp;&nbsp;&nbsp;PLAID Justin</p>
+<br>
+<footer>
+PALMIERI Adrien &nbsp;&nbsp;&nbsp;MULLER Geoffroy &nbsp;&nbsp;&nbsp;KIRCHER Nicolas &nbsp;&nbsp;&nbsp;PLAID Justin
+</footer>
 </div></html>
 END;
 
