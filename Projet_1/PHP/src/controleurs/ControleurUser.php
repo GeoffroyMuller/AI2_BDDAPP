@@ -120,7 +120,7 @@ class ControleurUser
         $formulaire .= "<input type='submit' value='Valider'> </form> ";
 
 
-
+        $res .= $formulaire;
         $mail_utilisateur = Slim::getInstance()->request->post('mail_utilisateur');
         if (isset($mail_utilisateur)) {
 
@@ -131,12 +131,31 @@ class ControleurUser
             $utilisateur = $this->getUser($mail);
             if($utilisateur != null) {
                 // Lister les commentaires
-                $res .= "MAIL TROUVE";
+                $res .= "<h5> Commentaires de l'utilisateur : </h5>";
+               // $res .= " $utilisateur->mail <br> $utilisateur->address <br> $utilisateur";
+                $comments = $utilisateur->comments;
+
+                $res .= "<table style=\"width:100%\">
+                         <tr>
+                         <th>Utilisateur :</th>
+                         <th>Date du commentaire :</th>
+                         <th>Commentaire :</th>
+                         </tr>";
+
+                foreach($comments as $comment) {
+                    $res .= "  <tr>
+                               <td>$comment->user_mail</td>
+                               <td>$comment->written_date</td>
+                               <td>$comment->content</td>
+                               </tr>";
+                }
+
+                $res .= "</table>";
             } else {
-                $res .= "MAIL INEXISTANT";
+                $res .= "<h5> Le mail de l'utilisateur n'existe pas ";
             }
         }
-        $res .= $formulaire." </body></html> ";
+        $res .= " </body></html> ";
         (new VuePrincipal($res))->render();
     }
 

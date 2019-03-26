@@ -107,8 +107,12 @@ END;
         $html = <<<END
 <!DOCTYPE html>
 <html>
-<head><a href="$this->urlServeur">accueil</a></head>
+<head>
+<title>Projet BDD</title>
+<link rel="stylesheet" type="text/css" href="$this->urlServeur/css/style.css">
+</head>
 <body>
+<a href="$this->urlServeur">Accueil</a>
  <div class="menu">
  $menu
 </div>
