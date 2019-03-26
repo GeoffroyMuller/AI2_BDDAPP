@@ -7,6 +7,8 @@ use gamepedia\models\Comment;
 use gamepedia\models\User;
 use gamepedia\vues\VuePrincipal;
 use Faker\Factory as FakerFactory;
+use Slim\Slim;
+
 class ControleurUser
 {
 
@@ -97,6 +99,34 @@ class ControleurUser
             (new VuePrincipal("<h3>Insertions effectuées avec succès</h3>"))->render();
         } catch (\Exception $e) {
             (new VuePrincipal("<h3>Erreur lors de l'insertion : </h3> <br><br> $e"))->render();
+        }
+    }
+
+
+   // public function
+
+    public function getUser($user_mail) {
+        $user = User::where('mail','=',$user_mail)->first();
+        return $user;
+
+    }
+
+    public function listUserComments() {
+        $urlPostSearchComments = Slim::getInstance()->urlFor("Projet4_SEARCH_COMMENTS");
+    /*    $formulaireQuestion5 = "<form action='$urlPostSearchComments' method='post'><select name='numeroPage'>";
+        for ($i = 1; $i < $nbPages; $i++) {
+            $formulaireQuestion5 .= " <option value='$i'>$i</option> ";
+        }
+        $formulaireQuestion5 .= " </select> <input type='submit' value='Valider'> </form> ";
+        $res .= $formulaireQuestion5." </body></html> ";
+        (new VuePrincipal($res))->render();
+
+        $mail_utilisateur = Slim::getInstance()->request->post('numeroPage');*/
+        if (isset($mail_utilisateur)) {
+            $utilisateur = $this->getUser($mail_utilisateur);
+            if($utilisateur != null) {
+                // Lister les commentaires
+            }
         }
     }
 

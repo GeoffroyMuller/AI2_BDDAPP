@@ -50,6 +50,9 @@ class VuePrincipal
 
         $urlProjet4Question1 = $app->urlFor("PROJET4",['id' => 1]);
         $urlProjet4Question2 = $app->urlFor("PROJET4",['id' => 2]);
+        $urlProjet4Question3 = $app->urlFor("PROJET4",['id' => 3]);
+
+
             $html = <<<END
                 <h3>Projet 1</h3>
                 <ul>
@@ -90,6 +93,7 @@ class VuePrincipal
                 <ul>
                 <li><a href="$urlProjet4Question1">Ajouter 2 utilisateurs et leurs 3 commentaires</a></li>
                 <li><a href="$urlProjet4Question2">Generer aleatoirement 25000 utilisateurs et 250 000 commentaires</a></li>
+                <li><a href="$urlProjet4Question2">Rechercher les commentaires d'un l'utilisateur</a></li>
 </ul>
 END;
 

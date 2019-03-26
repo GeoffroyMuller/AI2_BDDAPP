@@ -131,7 +131,7 @@ $app->get('/projet3/question/:id', function ($id){
             (new ControleurLogs())->log5bis();
             break;
         default:
-            (new \gamepedia\vues\VuePrincipal("Aucune question ne correspond à ce numéro"))->render();
+            (new VuePrincipal("Aucune question ne correspond à ce numéro"))->render();
             break;
     }
 })->name("PROJET3");
@@ -145,11 +145,18 @@ $app->get('/projet4/question/:id', function ($id){
         case '2':
             (new ControleurUser())->createALotOfUsersAndCommentsWithFaker();
             break;
+        case '3':
+            (new ControleurUser())->listUserComments();
+            break;
         default:
-            (new \gamepedia\vues\VuePrincipal("Aucune question ne correspond à ce numéro"))->render();
+            (new VuePrincipal("Aucune question ne correspond à ce numéro"))->render();
             break;
     }
 })->name("PROJET4");
+
+$app->post('projet4/question/3', function() {
+    (new ControleurUser())->listUserComments();
+})->name("Projet4_SEARCH_COMMENTS");
 
 $app->post("/projet1/question/5", function() {
     (new \gamepedia\controleurs\ControleurGame())->paginationJeux();
