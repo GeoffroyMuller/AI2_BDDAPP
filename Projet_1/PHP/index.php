@@ -178,9 +178,15 @@ $app->get('/api/games/:id/comments', function($id) {
     (new ControleurAPI())->displayGameComments($id);
 })->name("API_COMMENTS");
 
+$app->get('/projet/add_comment_json_tester', function() {
+    (new ControleurAPI())->displayCommentTester();
+})->name("ADD_COMMENT_API_TESTER");
+
 $app->post('/api/games/:id/comments', function($id) {
     (new ControleurAPI())->addGameComment($id);
 })->name("API_ADD_COMMENT");
+
+
 $app->post('/projet4/question/4', function() {
     (new ControleurUser())->listUserComments();
 })->name("Projet4_SEARCH_COMMENTS");

@@ -57,6 +57,7 @@ class VuePrincipal
 
         $urlAPI_AccesJeu1 = $app->urlFor("API_GAME",['id' => 1]);
         $urlAPI_Jeux = $app->urlFor("API_GAMES");
+        $urlAPI_testCommentaire = $app->urlFor("ADD_COMMENT_API_TESTER");
 
 
             $html = <<<END
@@ -162,12 +163,9 @@ class VuePrincipal
                 <ul>
                 <li><a href="$urlAPI_AccesJeu1">Test API Jeu 1</a></li>
                 <li><a href="$urlAPI_Jeux">Test API Jeux</a></li>
+                <li><a href="$urlAPI_testCommentaire">Tester l'insertion de commentaire JSON</a></li>
                 </ul>
 
-
-<form action='http://localhost:8888/AIBDDLocal/api/games/12342/comments' method='post'>
-<input title="" name="json_request" type=\"text\" />
-<input type='submit' value='Valider'> </form> ";
 END;
 
         return $html;

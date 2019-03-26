@@ -30,7 +30,6 @@ class ControleurUser
                 $comment = new Comment;
                 $comment->title = "Commentaire numero $i";
                 $comment->content = "Contenu du commentaire.";
-                $comment->written_date = $creationDate;
                 $comment->created_at = $creationDate;
                 $comment->game_id = 12342;
                 $comment->user_mail = 'user1@mail.com';
@@ -51,7 +50,6 @@ class ControleurUser
                 $comment = new Comment;
                 $comment->title = "Commentaire numero $i";
                 $comment->content = "Contenu du commentaire.";
-                $comment->written_date = $creationDate;
                 $comment->created_at = $creationDate;
                 $comment->game_id = 12342;
                 $comment->user_mail = 'user2@mail.com';
@@ -110,7 +108,6 @@ class ControleurUser
                    $comment = new Comment;
                    $comment->content = $faker->text(200);
                    $comment->title = $faker->text(64);
-                   $comment->written_date = $creationDate;
                    $comment->created_at = $creationDate;
                    $comment->game_id = $faker->numberBetween(1,47948);
                    $comment->user_mail = $user->mail;
