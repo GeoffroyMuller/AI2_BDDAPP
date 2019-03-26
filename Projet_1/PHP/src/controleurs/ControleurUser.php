@@ -28,7 +28,8 @@ class ControleurUser
             for($i = 1; $i <= 3 ; $i++) {
                 $creationDate = new DateTime();
                 $comment = new Comment;
-                $comment->content = "Commentaire numero $i";
+                $comment->title = "Commentaire numero $i";
+                $comment->content = "Contenu du commentaire.";
                 $comment->written_date = $creationDate;
                 $comment->created_at = $creationDate;
                 $comment->game_id = 12342;
@@ -48,7 +49,8 @@ class ControleurUser
             for($i = 1; $i <= 3 ; $i++) {
                 $creationDate = new DateTime();
                 $comment = new Comment;
-                $comment->content = "Commentaire numero $i";
+                $comment->title = "Commentaire numero $i";
+                $comment->content = "Contenu du commentaire.";
                 $comment->written_date = $creationDate;
                 $comment->created_at = $creationDate;
                 $comment->game_id = 12342;
@@ -107,6 +109,7 @@ class ControleurUser
                    $creationDate = new DateTime();
                    $comment = new Comment;
                    $comment->content = $faker->text(200);
+                   $comment->title = $faker->text(64);
                    $comment->written_date = $creationDate;
                    $comment->created_at = $creationDate;
                    $comment->game_id = $faker->numberBetween(1,47948);
@@ -155,6 +158,7 @@ class ControleurUser
                          <tr>
                          <th>Utilisateur :</th>
                          <th>Date du commentaire :</th>
+                         <th>Titre du commentaire :</th>
                          <th>Commentaire :</th>
                          </tr>";
 
@@ -162,6 +166,7 @@ class ControleurUser
                     $res .= "  <tr>
                                <td>$comment->user_mail</td>
                                <td>$comment->created_at</td>
+                               <td>$comment->title</td>
                                <td>$comment->content</td>
                                </tr>";
                 }
