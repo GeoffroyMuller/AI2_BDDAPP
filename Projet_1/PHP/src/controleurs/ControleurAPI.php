@@ -16,12 +16,22 @@ class ControleurAPI
 
     public function displayGames() {
         $premiersJeux = array();
-        for($i = 1 ; $i <= 200 ; $i++) {
-            $test = Game::where('id','=',$i)->first();
-            $premiersJeux[$i] = $test;
 
+
+        $paramValue = \Slim\Slim::getInstance()->request()->get('page');
+        if(isset($paramValue)) {
+            for($i = (($paramValue-1)*200) + 1 ; $i <= (200*$paramValue); $i++) {
+                $test = Game::where('id','=',$i)->first();
+                $premiersJeux[$i] = $test;
+
+            }
+        } else {
+            for($i = 1 ; $i <= 200 ; $i++) {
+                $test = Game::where('id','=',$i)->first();
+                $premiersJeux[$i] = $test;
+
+            }
         }
-
         (new VueAPI($premiersJeux))->render();
     }
 }
