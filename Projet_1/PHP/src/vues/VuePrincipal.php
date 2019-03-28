@@ -75,11 +75,11 @@ class VuePrincipal
                     <div class="menu_button"><a href="">Seance 1</a></div>
                  
                     <div class="menu_content">
-                        <a href="$urlProjet1Question1">Question 1</a>
-                        <a href="$urlProjet1Question2">Question 2</a>
-                        <a href="$urlProjet1Question3">Question 3</a>
-                        <a href="$urlProjet1Question4">Question 4</a>
-                        <a href="$urlProjet1Question5">Question 5</a>
+                        <a href="$urlProjet1Question1">Q1 : lister les jeux contenant Mario dans leur titre</a>
+                        <a href="$urlProjet1Question2">Q2 : lister les compagnies installées au Japon</a>
+                        <a href="$urlProjet1Question3">Q3 : lister les plateformes avec une base >= 10M</a>
+                        <a href="$urlProjet1Question4">Q4 : lister 442 jeux à partir du 21 173ème</a>
+                        <a href="$urlProjet1Question5">Q5 : lister les jeux (nom et deck) avec pagination</a>
                     </div>
                 </li>
                 <li class="menu_item">
@@ -87,13 +87,13 @@ class VuePrincipal
                     <div class="menu_button"><a href="">Seance 2</a></div>
                  
                     <div class="menu_content">
-                         <a href="$urlProjet2Question1">Question 1</a>
-                         <a href="$urlProjet2Question2">Question 2</a>
-                         <a href="$urlProjet2Question3">Question 3</a>
-                         <a href="$urlProjet2Question4">Question 4</a>
-                         <a href="$urlProjet2Question5">Question 5</a>
-                         <a href="$urlProjet2Question6">Question 6</a>
-                         <a href="$urlProjet2Question7">Question 7</a>
+                         <a href="$urlProjet2Question1">Q1 : afficher les personnages du jeu 12342</a>
+                         <a href="$urlProjet2Question2">Q2 : afficher les personnages des jeux dont le nom débute par Mario</a>
+                         <a href="$urlProjet2Question3">Q3 : afficher les jeux développés par une compagnie contenant Sony</a>
+                         <a href="$urlProjet2Question4">Q4 : afficher le Rating Board des jeux contenant Mario</a>
+                         <a href="$urlProjet2Question5">Q5 : afficher les jeux Mario avec 4 personanges</a>
+                         <a href="$urlProjet2Question6">Q6 : jeux dont le nom commence par Mario, classés 3+</a>
+                         <a href="$urlProjet2Question7">Q7 : jeux 3+ développés par Inc contenant Mario</a>
                     </div>
                 </li>
                 <li class="menu_item">
@@ -101,10 +101,10 @@ class VuePrincipal
                     <div class="menu_button"><a href="">Seance 3</a></div>
                  
                     <div class="menu_content">
-                        <a href="$urlProjet3Question1">Question 1</a>
-                        <a href="$urlProjet3Question2">Question 2</a>
-                        <a href="$urlProjet3Question3">Question 3</a>
-                        <a href="$urlProjet3Question4">Question 4</a>
+                        <a href="$urlProjet3Question1">Q1 : temps d'execution pour lister les jeux</a>
+                        <a href="$urlProjet3Question2">Q2 : temps d'execution pour lister les jeux contenant Mario</a>
+                        <a href="$urlProjet3Question3">Q3 : temps d'execution pour afficher les personnages de jeux commencant par Mario</a>
+                        <a href="$urlProjet3Question4">Q4 : temps d'execution jeux commencant par mario avec 3+ en Rating</a>
                         <a href="$urlProjet3Question5">Mesures temps index (Partie 1)</a>
                         <a href="$urlProjet3Question6">Logs jeux Mario</a>
                         <a href="$urlProjet3Question7">Logs nom des personnages du jeu 12342</a>

@@ -10,7 +10,7 @@ use Slim\Slim as Slim;
 class ControleurGame
 {
 
-  public function tempsExecutionJeuxWhere() {
+public function tempsExecutionJeuxWhere() {
           $res = "<h3> Temps d'execution pour lister différents jeux : </h3>";
           $tempsDepart = microtime(true);
           $jeu = Game::where('name','LIKE', 'Mario%')->first();
@@ -38,8 +38,7 @@ class ControleurGame
       }
 
 
-
-    public function tempsExecutionPersosMario()
+public function tempsExecutionPersosMario()
     {
         $res = "<h3>Temps d'execution pour afficher les personnages des jeux commencant par Mario</h3>";
         $tempsDepart = microtime(true);
@@ -47,7 +46,7 @@ class ControleurGame
         $marioGames = Game::where('name','LIKE','Mario%')->get();
         foreach($marioGames as $marioGame) {
             foreach($marioGame->personnages as $personnage) {
-                // $res .= "Personnage du jeu commençant par Mario : $personnage->name <br>";
+
             }
         }
 
@@ -61,7 +60,7 @@ class ControleurGame
     }
 
 
-    public function tempsExecutionListerJeux() {
+public function tempsExecutionListerJeux() {
 
         $res = "<h3>Question n°1 Temps d'execution pour lister tout les jeux : </h3>";
         $tempsDepart = microtime(true);
@@ -73,7 +72,9 @@ class ControleurGame
         $res .= "<p>Temps d'execution : $duree</p>";
         (new VuePrincipal($res))->render();
     }
-    public function  tempsExecutionListerJeuxMario(){
+
+
+public function  tempsExecutionListerJeuxMario(){
         $res = "<h3>Question n°2 : Temps d'execution pour lister tout les jeux dont le nom contient Mario: </h3>";
         $tempsDepart = microtime(true);
         $games = Game::where('name', 'LIKE', '%mario%')->get();
@@ -84,55 +85,122 @@ class ControleurGame
         $res .= "<p>Temps d'execution : $duree</p>";
         (new VuePrincipal($res))->render();
     }
-    public function personnagesJeu12342() {
-        $res = "<h3>Question n°1 : personnages du jeu 12342</h3>";
+
+
+public function personnagesJeu12342() {
+        $res = "<h3>Question n°1 : personnages du jeu 12342</h3>
+           <br><br>
+            <table style=\"width:100 % \">
+            <tr>
+                <th>ID du personnage:</th>
+                <th>Nom du personnage:</th>
+                <th>Deck:</th>
+                <th>Description :</th>
+                <th>Date de création :</th>
+            </tr>";
         $jeu = Game::where('id','=','12342')->first();
         $charactersFor12342 = $jeu->personnages;
-        foreach($charactersFor12342 as $character) {
-           $res .= "Personnage : $character->name || Deck : $character->deck <br>";
-        }
+        foreach($charactersFor12342 as $personnage) {
+            $res .= "<tr>
+                        <td>$personnage->id</td>
+                        <td>$personnage->name</td>
+                        <td>$personnage->deck</td>
+                        <td>$personnage->description</td>
+                        <td>$personnage->created_at</td>
+                        </tr>";  }
+        $res .= "</table></body>";
         (new VuePrincipal($res))->render();
 
     }
 
+
 public function ratingBoardMario() {
     $games = Game::where('name', 'LIKE', '%mario%')->get();
-    $res = "<h3>Question n°4 : rating boards des jeux contenant Mario</h3>";
+    $res = "<h3>Question n°4 : rating boards des jeux contenant Mario</h3>
+            <br><br><table style='width:100%'>
+            <tr>
+                <th>ID du board :</th>
+                <th>Nom du board :</th>
+                <th>Deck du board :</th>
+                
+            </tr>";
+
     foreach($games as $marioGame) {
         $ratingsMario = $marioGame->ratings;
         foreach($ratingsMario as $ratingMario) {
             $ratingBoard = RatingBoard::where('id', '=',$ratingMario->rating_board_id)->first();
-            $res .= " Rating Board : $ratingBoard->name ($ratingBoard->deck) <br>";
+            $res .= "<tr>
+                        <td>$ratingBoard->id</td>
+                        <td>$ratingBoard->name</td>
+                        <td>$ratingBoard->deck</td>
+                      </tr>";
         }
     }
+
+    $res .= "</table>";
     (new VuePrincipal($res))->render();
 }
 
+
 public function jeuxDebutMario4Persos() {
-    $res = "<h3>Question n°5 : jeux dont le nom commence par Mario avec au moins 4 personnaes</h3>";
+    $res = "<h3>Question n°5 : jeux dont le nom commence par Mario avec au moins 4 personnages</h3>
+            <br><br>
+            <table style=\"width:100%\">
+            <tr>
+            <th>ID jeu:</th>
+            <th>Titre du jeu:</th>
+            <th>Alias du jeu:</th>
+            <th>Description :</th>
+            <th>Date de création :</th>
+            </tr>";
     $marioGames = Game::where('name','LIKE','Mario%')->get();
     foreach($marioGames as $game) {
         if($game->personnages()->count() > 3) {
-            $res .= "Jeu commençant par Mario avec au moins 4 personnages : $game->name <br>";
+            $res .= "<tr>
+                        <td>$game->id</td>
+                        <td>$game->name</td>
+                        <td>$game->alias</td>
+                        <td>$game->description</td>
+                        <td>$game->created_at</td>
+                </tr>";
         }
     }
+    $res .= "</table>";
     (new VuePrincipal($res))->render();
 }
 
+
 public function jeuxMario3Plus() {
-    $res = "<h3>Question n°6 : jeux dont le nom commence par mario et classés 3+ en rating</h3>";
+    $res = "<h3>Question n°6 : jeux dont le nom commence par mario et classés 3+ en rating</h3>
+            <br><br>
+            <table style=\"width:100%\">
+            <tr>
+            <th>ID jeu:</th>
+            <th>Titre du jeu:</th>
+            <th>Alias du jeu:</th>
+            <th>Description :</th>
+            <th>Date de création :</th>
+            </tr>";
     $marioGames = Game::where('name','LIKE','Mario%')->get();
     foreach($marioGames as $game) {
         $ratings = $game->ratings()->where('name','like','%3+%','and','game_id','=',$game->id)->count();
         if($ratings >= 1) {
-            $res .= "Jeu 3+ commençant par Mario : $game->name <br>";
+            $res .= "<tr>
+                    <td>$game->id</td>
+                    <td>$game->name</td>
+                    <td>$game->alias</td>
+                    <td>$game->description</td>
+                    <td>$game->created_at</td>
+                    </tr>";
         }
 
     }
+    $res .= "</table>";
     (new VuePrincipal($res))->render();
 }
 
-    public function tempsExecutionListerMario3Plus() {
+
+public function tempsExecutionListerMario3Plus() {
 
         $res = "<h3> Temps d'execution pour lister tout les jeux dont le nom commence par mario et classés 3+ en rating</h3>";
         $tempsDepart = microtime(true);
@@ -148,59 +216,116 @@ public function jeuxMario3Plus() {
 
         $duree = $tempsFin - $tempsDepart;
 
-        $res .= "<p>Temps d'execution : $duree</p>";
+        $res .= "<p>Temps d'execution : $duree</p></body></html>";
         (new VuePrincipal($res))->render();
     }
 
-    public function personnagesJeuxDebutMario(){
-        $res = "<h3>Question n°2 : personnages des jeux commençant par mario</h3>";
+
+public function personnagesJeuxDebutMario(){
+        $res = "<h3>Question n°2 : personnages des jeux commençant par mario</h3><br><br><table style=\"width:100 % \">
+                <tr>
+                <th>ID du personnage:</th>
+                <th>Nom du personnage:</th>
+                <th>Deck:</th>
+                <th>Description :</th>
+                <th>Date de création :</th>
+                </tr>";
         $marioGames = Game::where('name','LIKE','Mario%')->distinct()->get();
         foreach($marioGames as $marioGame) {
             foreach($marioGame->personnages as $personnage) {
-                $res .= "Personnage du jeu commençant par Mario : $personnage->name <br>";
+                $res .= "<tr>
+                        <td>$personnage->id</td>
+                        <td>$personnage->name</td>
+                        <td>$personnage->deck</td>
+                        <td>$personnage->description</td>
+                        <td>$personnage->created_at</td>
+                        </tr>";
             }
         }
-
+        $res .= "</table>";
         (new VuePrincipal($res))->render();
     }
 
-    public function personnagesJeuxDebutMarioOpti(){
-        $res = "<h3>Question n°2 : personnages des jeux commençant par mario</h3>";
-        $games = Game::where('name','LIKE','Mario%')->with('personnages')->get();
 
-        foreach ($games as $game) {
-          foreach($game->personnages as $personnage) {
-            $res .= "Personnage du jeu commençant par Mario :$personnage->name <br>";
-          }
+public function personnagesJeuxDebutMarioOpti(){
+        $res = "<h3>Chargement lié : personnages des jeux commençant par mario</h3><br><br><table style=\"width:100 % \">
+                <tr>
+                <th>ID du personnage:</th>
+                <th>Nom du personnage:</th>
+                <th>Deck:</th>
+                <th>Description :</th>
+                <th>Date de création :</th>
+                </tr>";
+        $marioGames = Game::where('name','LIKE','Mario%')->distinct()->get();
+        foreach($marioGames as $marioGame) {
+            foreach($marioGame->personnages as $personnage) {
+                $res .= "<tr>
+                        <td>$personnage->id</td>
+                        <td>$personnage->name</td>
+                        <td>$personnage->deck</td>
+                        <td>$personnage->description</td>
+                        <td>$personnage->created_at</td>
+                        </tr>";
+            }
         }
-
+        $res .= "</table>";
         (new VuePrincipal($res))->render();
     }
 
-    public function afficherJeuxMario()
+
+public function afficherJeuxMario()
     {
-        $res = "<h3>Question n°1 : liste des jeux contenant Mario dans leur titre</h3>";
+        $res = "<h3>Question n°1 : liste des jeux contenant Mario dans leur titre</h3><br><br><table style=\"width:100%\">
+                <tr>
+                <th>ID jeu:</th>
+                <th>Titre du jeu:</th>
+                <th>Alias du jeu:</th>
+                <th>Description :</th>
+                <th>Date de création :</th>
+                </tr>";
         $games = Game::where('name', 'LIKE', '%mario%')->get();
         foreach($games as $game) {
-            $res .= "Nom du jeu : $game->name </br>";
+            $res .= "<tr>
+                    <td>$game->id</td>
+                    <td>$game->name</td>
+                    <td>$game->alias</td>
+                    <td>$game->description</td>
+                    <td>$game->created_at</td>
+                    </tr>";
         }
+        $res .= "</table>";
         (new VuePrincipal($res))->render();
     }
 
-    public function afficherJeuxAPartir()
+
+public function afficherJeuxAPartir()
     {
 
-        $res = "<h3>Question n°4 : liste de 442 jeux à partir du 21173ème</h3>";
+        $res = "<h3>Question n°4 : liste de 442 jeux à partir du 21173ème</h3><br><br><table style=\"width:100 %\">
+                <tr>
+                <th>ID jeu:</th>
+                <th>Titre du jeu:</th>
+                <th>Alias du jeu:</th>
+                <th>Description :</th>
+                <th>Date de création :</th>
+                </tr>";
         for ($i = 0; $i < 443; $i++) {
-            $jeu = Game::where('id', '=', '21173' + $i)->first();
-            $res .= "id: $jeu->id,  nom: $jeu->name <br>";
+            $game = Game::where('id', '=', '21173' + $i)->first();
+            $res .= "<tr>
+                    <td>$game->id</td>
+                    <td>$game->name</td>
+                    <td>$game->alias</td>
+                    <td>$game->description</td>
+                    <td>$game->created_at</td>
+                    </tr>";
         }
+        $res .= "</table>";
         (new VuePrincipal($res))->render();
     }
 
-    public function paginationJeux()
+
+public function paginationJeux()
     {
-        $res = "<h3>Question n°5 : lister les jeux, afficher leur nom et deck, en paginant (taille des pages : 500)</h3>";
         $idmax = Game::select('id')->get();
         $nbPages = (count($idmax) / 500) + 1;
         $numPage = 1;
@@ -209,24 +334,36 @@ public function jeuxMario3Plus() {
             $numPage = $numeroPage;
         }
         $valeurMax = $numPage * 500;
-        for ($valeurMin = $valeurMax - 499; $valeurMin < $valeurMax + 1; $valeurMin++) {
-            $jeuAffiche = Game::where('id', '=', $valeurMin)->first();
-            if ($jeuAffiche != null) {
-                $res .="<ul>";
-                $res .="<li>Identifiant du jeu: $jeuAffiche->id</li>";
-                $res .="<li>Nom du jeu: $jeuAffiche->name</li>";
-                $res .="<li>Description du deck: $jeuAffiche->deck</li>";
-                $res .="</ul>";
-            }
-        }
-
         $urlQuestion5 = Slim::getInstance()->urlFor("Projet1_Q5");
         $formulaireQuestion5 = "<form action='$urlQuestion5' method='post'><select name='numeroPage'>";
         for ($i = 1; $i < $nbPages; $i++) {
             $formulaireQuestion5 .= " <option value='$i'>$i</option> ";
         }
         $formulaireQuestion5 .= " </select> <input type='submit' value='Valider'> </form> ";
-        $res .= $formulaireQuestion5." </body></html> ";
+
+        $res = "<h3>Question n°5 : lister les jeux, afficher leur nom et deck, en paginant (taille des pages : 500)</h3>
+                <br><br>$formulaireQuestion5<br><table style='width:100%'>
+                <tr>
+                <th>ID jeu:</th>
+                <th>Titre du jeu:</th>
+                <th>Deck :</th>
+                </tr>
+                ";
+
+        for ($valeurMin = $valeurMax - 499; $valeurMin < $valeurMax + 1; $valeurMin++) {
+            $jeuAffiche = Game::where('id', '=', $valeurMin)->first();
+            if ($jeuAffiche != null) {
+              $res .= "<tr>
+                        <td>$jeuAffiche->id</td>
+                        <td>$jeuAffiche->name</td>
+                        <td>$jeuAffiche->deck</td>
+                       </tr>";
+            }
+        }
+
+        $res .= "</table>";
+
+        $res .= $formulaireQuestion5;
         (new VuePrincipal($res))->render();
 
     }

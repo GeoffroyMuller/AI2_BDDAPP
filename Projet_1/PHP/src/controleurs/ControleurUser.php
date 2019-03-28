@@ -86,9 +86,9 @@ class ControleurUser
             $user->save();
 
         }
-            (new VuePrincipal("<h3>Insertions effectuées avec succès</h3>"))->render();
+            (new VuePrincipal("<h3>Insertions effectuées avec succès</h3><br><p>Les 25000 utilisateurs aléatoires ont été ajoutés avec succès.</p>"))->render();
         } catch (\Exception $e) {
-            (new VuePrincipal("<h3>Erreur lors de l'insertion : </h3> <br><br> $e"))->render();
+            (new VuePrincipal("<h3>Erreur lors de l'insertion : </h3><br><p>$e</p>"))->render();
         }
     }
 
@@ -114,9 +114,9 @@ class ControleurUser
                    $comment->save();
                }
            }
-            (new VuePrincipal("<h3>Insertions effectuées avec succès</h3>"))->render();
+            (new VuePrincipal("<h3>Insertions effectuées avec succès</h3><br><p>Les 250000 commentaires aléatoires ont été ajoutés avec succès.</p>"))->render();
         } catch (\Exception $e) {
-            (new VuePrincipal("<h3>Erreur lors de l'insertion : </h3> <br><br> $e"))->render();
+            (new VuePrincipal("<h3>Erreur lors de l'insertion : </h3><br><p>$e</p>"))->render();
         }
 
     }
@@ -142,7 +142,6 @@ class ControleurUser
 
 
             $mail = filter_var($mail_utilisateur, FILTER_SANITIZE_EMAIL);
-            // TODO : NE PAS OUBLIER LE FILTER VAR
 
             $utilisateur = $this->getUser($mail);
             if($utilisateur != null) {
@@ -173,7 +172,7 @@ class ControleurUser
                 $res .= "<h5> Le mail de l'utilisateur n'existe pas ";
             }
         }
-        $res .= " </body></html> ";
+
         (new VuePrincipal($res))->render();
     }
 
@@ -198,7 +197,7 @@ class ControleurUser
                                </tr>";
             }
         }
-        $res .= "</table></body></html>";
+        $res .= "</table>";
         (new VuePrincipal($res))->render();
     }
 

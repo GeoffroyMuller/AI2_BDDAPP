@@ -41,9 +41,9 @@ class ControleurAPI
                     <br>Voici un exemple : 
                     <br>{\"title\":\"Nouveau commentaire\",\"content\":\"Ce jeu est interessant.\",\"user_mail\":\"user1@mail.com\",\"created_at\":\"2019-03-26 20:00:01\"}";
         $res .= "<form action='$urlTryAddComment' method='post'>";
-        $res .= "<input title=\"Votre requête JSON\" id=\"json_request\" name=\"json_request\" type=\"text\" />";
+        $res .= "<input title=\"Votre requête JSON\" size='60' id=\"json_request\" name=\"json_request\" type=\"text\" />";
         $res .= "<input type='submit' value='Valider'> </form> ";
-        $res .= "</body></html>";
+
         (new VuePrincipal($res))->render();
     }
 

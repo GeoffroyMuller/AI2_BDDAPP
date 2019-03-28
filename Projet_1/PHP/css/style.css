@@ -2,7 +2,7 @@ table, th, td {
     border: 1px solid black;
 }
 
-ul {
+#navigation_menu {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -11,10 +11,10 @@ ul {
 }
 
 li {
-    float: left;
+
 }
 
-li a, .menu_button {
+.menu_item a, .menu_button {
     display: inline-block;
     color: white;
     text-align: center;
@@ -22,12 +22,13 @@ li a, .menu_button {
     text-decoration: none;
 }
 
-li a:hover, .menu_item:hover .menu_button {
+.menu_item a:hover, .menu_item:hover .menu_button {
     background-color: #1183da;
 }
 
-li.menu_item {
+.menu_item {
     display: inline-block;
+    float: left;
 }
 
 h1,h2,h3,h4,h5,h6 {
